@@ -20,11 +20,20 @@ class ViewController: LMViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isSavedData()
+//        self.apiKeyField?.text = "2a540606-6e83-4fcc-946e-ea479bb3c6a8"
+//        self.userIdField?.text = "testpushcom123"
+//        self.userNameField?.text = "testpushcom"
+        self.apiKeyField?.text = "5f567ca1-9d74-4a1b-be8b-a7a81fef796f"
+        self.userIdField?.text = "aca04469-4fde-4593-834d-f7931244d2f1"
+        self.userNameField?.text = "Pushpendra Singh"
+        
     }
     
     func moveToNextScreen() {
         self.showHideLoaderView(isShow: false, backgroundColor: .clear)
-        guard let homefeedvc = try? LMChatHomeFeedViewModel.createModule() else { return }
+//        guard let homefeedvc = try? LMChatHomeFeedViewModel.createModule() else { return }
+//        guard let homefeedvc = try? LMChatFeedViewModel.createModule() else { return }
+        let homefeedvc = ChatFeedViewModel.createModule()
         let navigation = UINavigationController(rootViewController: homefeedvc)
         navigation.modalPresentationStyle = .overFullScreen
         self.present(navigation, animated: false)
