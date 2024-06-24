@@ -115,5 +115,6 @@ public extension Constants {
         public var gifBadge = loadImage(with: "gifBadge")
         public var addMoreEmojiIcon = loadImage(with: "addMoreEmoticons")
         public var circleFill = loadSystemImage(with: "circle.fill")
+        public var newDMIcon = loadImage(with: "newdm-icon")
     }
 }

@@ -73,7 +73,7 @@ public class LMChatParticipantListViewModel {
             pageNo += 1
             participants.append(contentsOf: participantsData)
             participantsContentModels.append(contentsOf: participantsData.compactMap({
-                .init(name: $0.name ?? "", designationDetail: nil, profileImageUrl: $0.imageUrl, customTitle: $0.customTitle)
+                .init(id: $0.sdkClientInfo?.uuid, name: $0.name ?? "", designationDetail: nil, profileImageUrl: $0.imageUrl, customTitle: $0.customTitle)
             }))
             delegate?.reloadData(with: participantsContentModels)
             isAllParticipantLoaded = (totalParticipantCount == participants.count)
@@ -124,7 +124,7 @@ public class LMChatParticipantListViewModel {
             
             participants.append(contentsOf: participantsData)
             participantsContentModels.append(contentsOf: participantsData.compactMap({
-                .init(name: $0.name ?? "", designationDetail: nil, profileImageUrl: $0.imageUrl, customTitle: $0.customTitle)
+                .init(id: $0.sdkClientInfo?.uuid, name: $0.name ?? "", designationDetail: nil, profileImageUrl: $0.imageUrl, customTitle: $0.customTitle)
             }))
             
             delegate?.reloadData(with: participantsContentModels)

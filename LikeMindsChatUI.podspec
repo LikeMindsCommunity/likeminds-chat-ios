@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name         = 'LikeMindsChatUI'
   spec.summary      = 'LikeMinds Chat UI official iOS SDK'
   spec.homepage     = 'https://likeminds.community/'
-  spec.version      = '1.0.1'
+  spec.version      = '1.2.0'
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.authors      = { 'pushpendrasingh' => 'pushpendra.singh@likeminds.community' }
   spec.source       = { :git => "https://github.com/LikeMindsCommunity/likeminds-chat-ios.git", :tag => spec.version }

@@ -12,12 +12,14 @@ import Kingfisher
 open class LMChatParticipantCell: LMTableViewCell {
     
     public struct ContentModel {
+        public let id: String?
         public let name: String
         public let designationDetail: String?
         public let profileImageUrl: String?
         public let customTitle: String?
         
-        public init(name: String, designationDetail: String?, profileImageUrl: String?, customTitle: String?) {
+        public init(id: String?, name: String, designationDetail: String?, profileImageUrl: String?, customTitle: String?) {
+            self.id = id
             self.name = name
             self.designationDetail = designationDetail
             self.profileImageUrl = profileImageUrl

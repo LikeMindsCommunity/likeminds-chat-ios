@@ -27,7 +27,7 @@ open class LMExploreChatroomListView: LMViewController {
         return view
     }()
     
-    open private(set) lazy var tableView: LMTableView = {
+    open private(set) lazy var tableView: LMTableView = {[weak self] in
         let table = LMTableView().translatesAutoresizingMaskIntoConstraints()
         table.register(LMUIComponents.shared.exploreChatroomCell)
         table.dataSource = self

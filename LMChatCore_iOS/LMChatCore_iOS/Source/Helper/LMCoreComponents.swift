@@ -14,7 +14,8 @@ public struct LMCoreComponents {
     public static var shared = Self()
     
     // MARK: HomeFeed Screen
-    public var homeFeedScreen: LMChatHomeFeedViewController.Type = LMChatHomeFeedViewController.self
+    public var groupChatFeedScreen: LMChatGroupFeedViewController.Type = LMChatGroupFeedViewController.self
+    public var chatFeedScreen: LMChatFeedViewController.Type = LMChatFeedViewController.self
     
     public var exploreChatroomListScreen: LMExploreChatroomListView.Type = LMExploreChatroomListView.self
     public var exploreChatroomScreen: LMExploreChatroomViewController.Type = LMExploreChatroomViewController.self
@@ -36,4 +37,8 @@ public struct LMCoreComponents {
     
     // MARK: Search List Screen
     public var searchListScreen: LMChatSearchListViewController.Type = LMChatSearchListViewController.self
+    
+    //MARK: DM Screen
+    public var dmChatFeedScreen: LMChatDMFeedViewController.Type = LMChatDMFeedViewController.self
+    public var dmMemberListScreen: LMChatMemberListViewController.Type = LMChatMemberListViewController.self
 }

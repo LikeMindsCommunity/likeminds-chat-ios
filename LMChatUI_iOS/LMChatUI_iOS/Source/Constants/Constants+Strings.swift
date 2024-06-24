@@ -31,5 +31,6 @@ public extension Constants {
         public let secretChatroomRestrictionMessage = "Join this chatroom to participate in this chatroom."
         public let muteUnmuteMessage = "Notification %@ for this chatroom!"
         public let voiceRecordMessage = "Tap and hold to record a voice message!"
+        public let sendDMToTitle = "Send DM to"
     }
 }

@@ -65,6 +65,8 @@ open class LMViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: navigationTitleView.bottomAnchor),
             stackView.trailingAnchor.constraint(equalTo: navigationTitleView.trailingAnchor)
         ])
+        stackView.addArrangedSubview(navigationHeaderTitleLabel)
+        stackView.addArrangedSubview(navigationHeaderSubtitleLabel)
         return stackView
     }()
     
@@ -234,20 +236,15 @@ open class LMViewController: UIViewController {
         
         titleStackView.alignment = alignment
         
-        if let title,
-           !title.isEmpty {
-            navigationHeaderTitleLabel.text = title
-            navigationHeaderTitleLabel.textColor = Appearance.shared.colors.black
-            navigationHeaderTitleLabel.font = Appearance.shared.fonts.navigationTitleFont
-            titleStackView.addArrangedSubview(navigationHeaderTitleLabel)
-        }
-        if let subtitle,
-           !subtitle.isEmpty {
-            navigationHeaderSubtitleLabel.text = subtitle
-            navigationHeaderSubtitleLabel.textColor = Appearance.shared.colors.textColor
-            navigationHeaderSubtitleLabel.font = Appearance.shared.fonts.navigationSubtitleFont
-            titleStackView.addArrangedSubview(navigationHeaderSubtitleLabel)
-        }
+        navigationHeaderTitleLabel.text = title
+        navigationHeaderTitleLabel.textColor = Appearance.shared.colors.black
+        navigationHeaderTitleLabel.font = Appearance.shared.fonts.navigationTitleFont
+        navigationHeaderTitleLabel.isHidden = (title ?? "").isEmpty
+        
+        navigationHeaderSubtitleLabel.text = subtitle
+        navigationHeaderSubtitleLabel.textColor = Appearance.shared.colors.textColor
+        navigationHeaderSubtitleLabel.font = Appearance.shared.fonts.navigationSubtitleFont
+        navigationHeaderSubtitleLabel.isHidden = (subtitle ?? "").isEmpty
         
         navigationItem.titleView = navigationTitleView
     }

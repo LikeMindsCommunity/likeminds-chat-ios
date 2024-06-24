@@ -76,6 +76,7 @@ extension LMChatParticipantListViewController: LMChatParticipantListViewModelPro
 
 @objc
 extension LMChatParticipantListViewController: LMParticipantListViewDelegate {
+    
     open func didTapOnCell(indexPath: IndexPath) {
         print("participant clicked......")
     }

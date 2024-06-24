@@ -1,6 +1,6 @@
 //
-//  LMParticipantList.swift
-//  LikeMindsChatCore
+//  LMChatParticipantListView.swift
+//  LikeMindsChatUI
 //
 //  Created by Pushpendra Singh on 16/02/24.
 //
@@ -32,11 +32,18 @@ open class LMChatParticipantListView: LMView {
         return view
     }()
     
-    open private(set) lazy var tableView: LMTableView = {
+    open private(set) lazy var loadingView: LMChatHomeFeedShimmerView = {
+        let view = LMUIComponents.shared.homeFeedShimmerView.init().translatesAutoresizingMaskIntoConstraints()
+        view.setWidthConstraint(with: UIScreen.main.bounds.size.width)
+        return view
+    }()
+    
+    open private(set) lazy var tableView: LMTableView = {[weak self] in
         let table = LMTableView().translatesAutoresizingMaskIntoConstraints()
-        table.register(LMChatParticipantCell.self)
+        table.register(LMUIComponents.shared.participantListCell)
         table.dataSource = self
         table.delegate = self
+        table.prefetchDataSource = self
         table.showsVerticalScrollIndicator = false
         table.clipsToBounds = true
         table.separatorStyle = .none
@@ -46,7 +53,7 @@ open class LMChatParticipantListView: LMView {
     
     
     // MARK: Data Variables
-    public let cellHeight: CGFloat = 60
+    public let cellHeight: CGFloat = 80
     public var data: [LMChatParticipantCell.ContentModel] = []
     public weak var delegate: LMParticipantListViewDelegate?
     
@@ -74,27 +81,30 @@ open class LMChatParticipantListView: LMView {
         backgroundColor = Appearance.shared.colors.clear
         containerView.backgroundColor = Appearance.shared.colors.white
         tableView.backgroundColor = Appearance.shared.colors.clear
+        tableView.backgroundView = loadingView
     }
     
     open func reloadList() {
+        if data.count > 0  {
+            tableView.backgroundView = nil
+        } else {
+            tableView.backgroundView = loadingView
+        }
         tableView.reloadData()
     }
 }
 
 
 // MARK: UITableView
-extension LMChatParticipantListView: UITableViewDataSource, UITableViewDelegate {
+extension LMChatParticipantListView: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(LMChatParticipantCell.self) {
+        if let cell = tableView.dequeueReusableCell(LMUIComponents.shared.participantListCell) {
             let item = data[indexPath.row]
             cell.configure(with: item)
-            if indexPath.row >= (data.count - 5) {
-                delegate?.loadMoreData()
-            }
             return cell
         }
         
@@ -103,5 +113,15 @@ extension LMChatParticipantListView: UITableViewDataSource, UITableViewDelegate 
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didTapOnCell(indexPath: indexPath)
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        cellHeight
+    }
+    
+    open func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: { $0.row >= (data.count - 1) }) {
+            delegate?.loadMoreData()
+        }
     }
 }

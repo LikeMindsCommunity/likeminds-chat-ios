@@ -48,6 +48,24 @@ open class LMButton: UIButton {
         }
     }
     
+    public func setInsets(
+        forContentPadding contentPadding: UIEdgeInsets,
+        imageTitlePadding: CGFloat
+    ) {
+        self.contentEdgeInsets = UIEdgeInsets(
+            top: contentPadding.top,
+            left: contentPadding.left,
+            bottom: contentPadding.bottom,
+            right: contentPadding.right + imageTitlePadding
+        )
+        self.titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: imageTitlePadding,
+            bottom: 0,
+            right: -imageTitlePadding
+        )
+    }
+    
     public func setImageInsets(with value: CGFloat) {
         if #available(iOS 15.0, *) {
             configuration?.imagePadding = value

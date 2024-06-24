@@ -8,8 +8,10 @@ target 'LikemindsChatSample' do
   use_frameworks!
 
   # Pods for LikemindsChatSample
- pod 'LikeMindsChatCore'
-
+ pod 'LikeMindsChat', path: '../../LikeMinds-iOS-Chat-SDK/LikeMindsChat.podspec'
+ pod 'LikeMindsChatUI', path: '../LikeMindsChatUI.podspec'
+ pod 'LikeMindsChatCore', path: '../LikeMindsChatCore.podspec'
+ 
 end
 
 post_install do |installer|

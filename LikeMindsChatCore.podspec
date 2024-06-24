@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name         = 'LikeMindsChatCore'
   spec.summary      = 'LikeMinds Chat official iOS SDK'
   spec.homepage     = 'https://likeminds.community/'
-  spec.version      = '1.0.1'
+  spec.version      = '1.2.0'
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.authors      = { 'pushpendrasingh' => 'pushpendra.singh@likeminds.community' }
   spec.source       = { :git => "https://github.com/LikeMindsCommunity/likeminds-chat-ios.git", :tag => spec.version }
@@ -20,6 +20,6 @@ Pod::Spec.new do |spec|
   spec.dependency "AWSCognito"
   spec.dependency "AWSS3"
   spec.dependency 'Giphy'
-  spec.dependency 'LikeMindsChatData'
+  spec.dependency 'LikeMindsChat'
   spec.dependency 'LikeMindsChatUI'
 end

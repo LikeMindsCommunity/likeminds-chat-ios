@@ -359,7 +359,7 @@ public final class LMChatMessageListViewModel {
                    createdByImageUrl: replyConversation.member?.imageUrl, createdById: replyConversation.member?.sdkClientInfo?.uuid,
                    isIncoming: replyConversation.member?.sdkClientInfo?.uuid != UserPreferences.shared.getClientUUID(),
                    messageType: replyConversation.state.rawValue,
-                   createdTime: timestampConverted(createdAtInEpoch: replyConversation.createdEpoch ?? 0),
+                   createdTime: LMCoreTimeUtils.timestampConverted(withEpoch: replyConversation.createdEpoch ?? 0),
                    ogTags: createOgTags(replyConversation.ogTags),
                    isEdited: replyConversation.isEdited,
                    attachmentUploaded: replyConversation.attachmentUploaded, isShowMore: false, messageStatus: messageStatus(replyConversation.conversationStatus),
@@ -376,7 +376,7 @@ public final class LMChatMessageListViewModel {
                      createdByImageUrl: conversation.member?.imageUrl,
                      createdById: conversation.member?.sdkClientInfo?.uuid,
                      isIncoming: conversation.member?.sdkClientInfo?.uuid != UserPreferences.shared.getClientUUID(),
-                     messageType: conversation.state.rawValue, createdTime: timestampConverted(createdAtInEpoch: conversation.createdEpoch ?? 0), ogTags: createOgTags(conversation.ogTags), isEdited: conversation.isEdited, attachmentUploaded: conversation.attachmentUploaded, isShowMore: false, messageStatus: messageStatus(conversation.conversationStatus), tempId: conversation.temporaryId)
+                     messageType: conversation.state.rawValue, createdTime: LMCoreTimeUtils.timestampConverted(withEpoch: conversation.createdEpoch ?? 0), ogTags: createOgTags(conversation.ogTags), isEdited: conversation.isEdited, attachmentUploaded: conversation.attachmentUploaded, isShowMore: false, messageStatus: messageStatus(conversation.conversationStatus), tempId: conversation.temporaryId)
     }
     
     func messageStatus(_ status: ConversationStatus?) -> LMMessageStatus {
@@ -416,21 +416,7 @@ public final class LMChatMessageListViewModel {
         }
         return reactionsArray
     }
-    
-    func timestampConverted(createdAtInEpoch: Int) -> String? {
-        guard createdAtInEpoch > .zero else { return nil }
-        var epochTime = Double(createdAtInEpoch)
-        
-        if epochTime > Date().timeIntervalSince1970 {
-            epochTime = epochTime / 1000
-        }
-        
-        let date = Date(timeIntervalSince1970: epochTime)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter.string(from: date)
-    }
-    
+
     func insertOrUpdateConversationIntoList(_ conversation: Conversation) {
         if let firstIndex = chatMessages.firstIndex(where: {($0.id == conversation.id) || ($0.id == conversation.temporaryId) || ($0.temporaryId != nil && $0.temporaryId == conversation.temporaryId)}) {
             chatMessages[firstIndex] = conversation

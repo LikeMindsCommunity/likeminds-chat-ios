@@ -26,10 +26,10 @@ public class LMChatHomeFeedViewModel {
         self.delegate = viewController
     }
     
-    public static func createModule() throws -> LMChatHomeFeedViewController {
+    public static func createModule() throws -> LMChatGroupFeedViewController {
         guard LMChatMain.isInitialized else { throw LMChatError.chatNotInitialized }
         
-        let viewController = LMCoreComponents.shared.homeFeedScreen.init()
+        let viewController = LMCoreComponents.shared.groupChatFeedScreen.init()
         viewController.viewModel = LMChatHomeFeedViewModel(viewController)
         return viewController
     }
@@ -90,18 +90,18 @@ public class LMChatHomeFeedViewModel {
         lastMessage = GetAttributedTextWithRoutes.getAttributedText(from: lastMessage).string
         let fileType = lastConversation?.attachments?.first?.type
         
-       return  LMChatHomeFeedChatroomView.ContentModel(userName: creatorName,
-                                                                     lastMessage: lastMessage,
-                                                                     chatroomName: chatroom?.header ?? "",
-                                                                     chatroomImageUrl: chatroom?.chatroomImageUrl,
-                                                                     isMuted: chatroom?.muteStatus ?? false,
-                                                                     isSecret: chatroom?.isSecret ?? false,
-                                                                     isAnnouncementRoom: chatroom?.type == ChatroomType.purpose.rawValue,
-                                                                     unreadCount: chatroom?.unseenCount ?? 0,
-                                                                     timestamp: timestampConverted(createdAtInEpoch: lastConversation?.createdEpoch ?? 0) ?? "",
-                                                                     fileTypeWithCount: getAttachmentType(chatroom: chatroom),
-                                                                     messageType: chatroom?.lastConversation?.state.rawValue ?? 0,
-                                                                     isContainOgTags: lastConversation?.ogTags != nil)
+        return  LMChatHomeFeedChatroomView.ContentModel(userName: creatorName,
+                                                        lastMessage: lastMessage,
+                                                        chatroomName: chatroom?.header ?? "",
+                                                        chatroomImageUrl: chatroom?.chatroomImageUrl,
+                                                        isMuted: chatroom?.muteStatus ?? false,
+                                                        isSecret: chatroom?.isSecret ?? false,
+                                                        isAnnouncementRoom: chatroom?.type == ChatroomType.purpose.rawValue,
+                                                        unreadCount: chatroom?.unseenCount ?? 0,
+                                                        timestamp: LMCoreTimeUtils.timestampConverted(withEpoch: lastConversation?.createdEpoch ?? 0, withOnlyTime: false) ?? "",
+                                                        fileTypeWithCount: getAttachmentType(chatroom: chatroom),
+                                                        messageType: chatroom?.lastConversation?.state.rawValue ?? 0,
+                                                        isContainOgTags: lastConversation?.ogTags != nil)
     }
     
     func getAttachmentType(chatroom: Chatroom?) -> [(String, Int)] {
@@ -116,30 +116,6 @@ public class LMChatHomeFeedViewModel {
         return typeArray
     }
     
-    func timestampConverted(createdAtInEpoch: Int) -> String? {
-        guard createdAtInEpoch > .zero else { return nil }
-        var epochTime = Double(createdAtInEpoch)
-        
-        if epochTime > Date().timeIntervalSince1970 {
-            epochTime = epochTime / 1000
-        }
-        
-        let date = Date(timeIntervalSince1970: epochTime)
-        let dateFormatter = DateFormatter()
-        
-        if Calendar.current.isDateInToday(date) {
-            dateFormatter.dateFormat = "HH:mm"
-            //            dateFormatter.dateFormat = "hh:mm a"
-            //            dateFormatter.amSymbol = "AM"
-            //            dateFormatter.pmSymbol = "PM"
-            return dateFormatter.string(from: date)
-        } else if Calendar.current.isDateInYesterday(date) {
-            return "Yesterday"
-        } else {
-            dateFormatter.dateFormat = "dd/MM/yy"
-            return dateFormatter.string(from: date)
-        }
-    }
 }
 
 extension LMChatHomeFeedViewModel: HomeFeedClientObserver {

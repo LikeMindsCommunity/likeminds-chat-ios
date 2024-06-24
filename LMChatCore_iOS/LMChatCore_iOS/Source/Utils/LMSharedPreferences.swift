@@ -9,6 +9,7 @@ import Foundation
 
 enum LMSharedPreferencesKeys: String {
     case tempDeeplinkUrl = "$_deeplink_url"
+    case isDMWithRequestEnabled = "$_isDMWithRequestEnabled"
 }
 
 class LMSharedPreferences {
@@ -43,6 +44,15 @@ class LMSharedPreferences {
     static func removeValue(forKey key: String) {
         shared.removeObject(forKey: key)
         shared.synchronize()
+    }
+    
+    static func setValue(_ value: Any, key: String) {
+        shared.set(value, forKey: key)
+        shared.synchronize()
+    }
+    
+    static func bool(forKey key: String) -> Bool? {
+        shared.value(forKey: key) as? Bool
     }
     
 }
