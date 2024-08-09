@@ -78,7 +78,8 @@ extension LMChatParticipantListViewController: LMChatParticipantListViewModelPro
 extension LMChatParticipantListViewController: LMParticipantListViewDelegate {
     
     open func didTapOnCell(indexPath: IndexPath) {
-        print("participant clicked......")
+        guard let participants = viewModel?.participantsContentModels, let participant = participants[safe: indexPath.row] else { return }
+        LMChatCore.shared.coreCallback?.userProfileViewHandle(withRoute: LMStringConstant.shared.profileRoute + (participant.id ?? ""))
     }
     
     open func loadMoreData() {

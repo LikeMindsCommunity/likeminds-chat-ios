@@ -116,7 +116,7 @@ extension LMChatTaggingListView: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-// MARK: LMFeedTaggingListViewModelProtocol
+// MARK: LMChatTaggingListViewModelProtocol
 extension LMChatTaggingListView: LMChatTaggingListViewModelProtocol {
     public func updateList(with users: [LMChatTaggingUserTableCell.ViewModel]) {
         taggingCellsData.removeAll(keepingCapacity: true)

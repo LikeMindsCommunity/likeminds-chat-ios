@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol LMFeedTaggingTextViewProtocol: AnyObject {
+public protocol LMChatTaggingTextViewProtocol: AnyObject {
     func mentionStarted(with text: String, chatroomId: String)
     func mentionStopped()
     func contentHeightChanged()
@@ -15,12 +15,12 @@ public protocol LMFeedTaggingTextViewProtocol: AnyObject {
     func textViewOnCharacterChange(_ textView: UITextView)
 }
 
-extension LMFeedTaggingTextViewProtocol {
+extension LMChatTaggingTextViewProtocol {
     public func textViewDidChange(_ textView: UITextView) {}
     public func textViewOnCharacterChange(_ textView: UITextView) {}
 }
 
-public extension LMFeedTaggingTextViewProtocol {
+public extension LMChatTaggingTextViewProtocol {
     func contentHeightChanged() { }
 }
 
@@ -41,7 +41,7 @@ open class LMChatTaggingTextView: LMTextView {
     public var characters: [Character] = []
     public var chatroomId: String = ""
     
-    public weak var mentionDelegate: LMFeedTaggingTextViewProtocol?
+    public weak var mentionDelegate: LMChatTaggingTextViewProtocol?
     
     public var textAttributes: [NSAttributedString.Key: Any] { [.font: Appearance.shared.fonts.textFont1,
                                                                 .foregroundColor: typingTextColor]

@@ -52,6 +52,7 @@ public struct LMUIComponents {
     public var chatMessageDocumentCell: LMChatDocumentViewCell.Type = LMChatDocumentViewCell.self
     public var chatMessageAudioCell: LMChatAudioViewCell.Type = LMChatAudioViewCell.self
     public var chatMessageLinkPreviewCell: LMChatLinkPreviewCell.Type = LMChatLinkPreviewCell.self
+    public var chatMessagePollCell: LMChatPollViewCell.Type = LMChatPollViewCell.self
     public var messageLoading: LMChatMessageLoading.Type = LMChatMessageLoading.self
     public var attachmentLoaderView: LMAttachmentLoaderView.Type = LMAttachmentLoaderView.self
     public var attachmentRetryView: LMChatAttachmentUploadRetryView.Type = LMChatAttachmentUploadRetryView.self
@@ -77,4 +78,18 @@ public struct LMUIComponents {
     public var searchMessageCell: LMChatSearchMessageCell.Type = LMChatSearchMessageCell.self
     public var searchChatroomCell: LMChatSearchChatroomCell.Type = LMChatSearchChatroomCell.self
     public var approveRejectRequestView: LMChatApproveRejectView.Type = LMChatApproveRejectView.self
+    
+    public var createPollDisplayView: LMChatCreateDisplayPollView.Type = LMChatCreateDisplayPollView.self
+    public var createPollDisplayWidget: LMChatDisplayCreatePollWidget.Type = LMChatDisplayCreatePollWidget.self
+    public var createPollHeaderView: LMChatCreatePollHeader.Type = LMChatCreatePollHeader.self
+    public var createPollQuestionView: LMChatCreatePollQuestionView.Type = LMChatCreatePollQuestionView.self
+    public var createPollDateView: LMChatCreatePollDateView.Type = LMChatCreatePollDateView.self
+    public var createPollMetaView: LMChatCreatePollMetaView.Type = LMChatCreatePollMetaView.self
+    public var createPollOptionCell: LMChatCreatePollOptionWidget.Type = LMChatCreatePollOptionWidget.self
+    
+    // MARK: Display Poll Components
+    public var pollContentView: LMChatPollContentView.Type = LMChatPollContentView.self
+    public var pollDisplayView: LMChatPollView.Type = LMChatPollView.self
+    public var pollOptionView: LMChatPollOptionView.Type = LMChatPollOptionView.self
+    public var resultPollOptionCell: LMChatPollResultCollectionCell.Type = LMChatPollResultCollectionCell.self
 }

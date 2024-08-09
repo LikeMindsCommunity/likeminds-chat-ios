@@ -1,5 +1,5 @@
 //
-//  LMFeedTaggingListViewModel.swift
+//  LMChatTaggingListViewModel.swift
 //  lm-feedCore-iOS
 //
 //  Created by Devansh Mohata on 11/01/24.

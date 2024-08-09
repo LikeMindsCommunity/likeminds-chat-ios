@@ -41,4 +41,12 @@ public struct LMCoreComponents {
     //MARK: DM Screen
     public var dmChatFeedScreen: LMChatDMFeedViewController.Type = LMChatDMFeedViewController.self
     public var dmMemberListScreen: LMChatMemberListViewController.Type = LMChatMemberListViewController.self
+    
+    //MARK: Poll
+    // MARK: Create Poll
+    public var createPollScreen: LMChatCreatePollViewController.Type = LMChatCreatePollViewController.self
+    
+    // MARK: Poll Result
+    public var pollResultScreen: LMChatPollResultScreen.Type = LMChatPollResultScreen.self
+    public var pollResultList: LMChatPollResultListScreen.Type = LMChatPollResultListScreen.self
 }

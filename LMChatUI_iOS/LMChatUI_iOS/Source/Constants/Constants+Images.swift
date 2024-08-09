@@ -47,6 +47,7 @@ public extension Constants {
         public var micFillIcon = loadSystemImage(with: "mic.fill")
         public var audioIcon = loadSystemImage(with: "headphones")
         public var pencilIcon = loadSystemImage(with: "pencil")
+        public var pointFinger = loadSystemImage(with: "hand.point.up")
         public var downArrow = loadSystemImage(with: "arrow.down")
         public var menuIcon = loadSystemImage(with: "line.3.horizontal")
         public var personIcon = loadSystemImage(with: "person")
@@ -116,5 +117,8 @@ public extension Constants {
         public var addMoreEmojiIcon = loadImage(with: "addMoreEmoticons")
         public var circleFill = loadSystemImage(with: "circle.fill")
         public var newDMIcon = loadImage(with: "newdm-icon")
+        
+        public var equalIcon = loadSystemImage(with: "equal")
+        public var plusCircleIcon = loadSystemImage(with: "plus.circle")
     }
 }

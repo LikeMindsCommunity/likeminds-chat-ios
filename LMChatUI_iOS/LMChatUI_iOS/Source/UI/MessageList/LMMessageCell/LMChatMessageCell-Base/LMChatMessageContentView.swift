@@ -86,9 +86,8 @@ open class LMChatMessageContentView: LMView {
         label.numberOfLines = 1
         label.font = Appearance.shared.fonts.headingLabel
         label.textColor = Appearance.shared.colors.red
-        label.paddingLeft = 2
+        label.paddingLeft = 4
         label.paddingTop = 2
-        label.paddingBottom = 2
         label.text = ""
         label.isUserInteractionEnabled = true
         return label
@@ -197,7 +196,7 @@ open class LMChatMessageContentView: LMView {
         return bubble
     }
     
-    open func setDataView(_ data: LMChatMessageCell.ContentModel, delegate: LMChatAudioProtocol?, index: IndexPath) {
+    open func setDataView(_ data: LMChatMessageCell.ContentModel, index: IndexPath) {
         dataView = data
         self.textLabel.isUserInteractionEnabled = true
         self.textLabel.attributedText = GetAttributedTextWithRoutes.getAttributedText(from: (data.message?.message ?? "").trimmingCharacters(in: .whitespacesAndNewlines), font: textLabelFont, withHighlightedColor: Appearance.Colors.shared.linkColor, withTextColor: textLabelColor)

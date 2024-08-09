@@ -68,6 +68,9 @@ open class LMChatMessageCell: LMTableViewCell {
     }()
     
     weak var delegate: LMChatMessageCellDelegate?
+    weak var audioDelegate: LMChatAudioProtocol?
+    weak var pollDelegate: LMChatPollViewDelegate?
+
     var currentIndexPath: IndexPath?
     var originalCenter = CGPoint()
     var replyActionHandler: (() -> Void)?
@@ -145,8 +148,8 @@ open class LMChatMessageCell: LMTableViewCell {
     
     
     // MARK: configure
-    open func setData(with data: ContentModel, delegate: LMChatAudioProtocol?, index: IndexPath) {
-        chatMessageView.setDataView(data, delegate: delegate, index: index)
+    open func setData(with data: ContentModel, index: IndexPath) {
+        chatMessageView.setDataView(data, index: index)
         chatMessageView.loaderView.delegate = self
         chatMessageView.retryView.delegate = self
         updateSelection(data: data)

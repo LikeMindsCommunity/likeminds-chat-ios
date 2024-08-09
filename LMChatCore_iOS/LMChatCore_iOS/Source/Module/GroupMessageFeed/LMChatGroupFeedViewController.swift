@@ -80,7 +80,7 @@ open class LMChatGroupFeedViewController: LMViewController {
     }
     
     @objc open func profileItemClicked() {
-//        self.showAlertWithActions(title: "View Profile", message: "Handle route route://member_profile/\(viewModel?.memberProfile?.sdkClientInfo?.uuid ?? "") to view profile! ", withActions: nil)
+        LMChatCore.shared.coreCallback?.userProfileViewHandle(withRoute: LMStringConstant.shared.profileRoute + (viewModel?.memberProfile?.sdkClientInfo?.uuid ?? ""))
     }
 }
 

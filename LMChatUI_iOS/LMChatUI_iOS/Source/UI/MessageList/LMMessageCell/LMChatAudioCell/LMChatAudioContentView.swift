@@ -20,6 +20,7 @@ open class LMChatAudioContentView: LMChatMessageContentView {
     }()
     
     public var onShowMoreCallback: (() -> Void)?
+    weak var audioDelegate: LMChatAudioProtocol?
     
     // MARK: setupViews
     open override func setupViews() {
@@ -35,13 +36,13 @@ open class LMChatAudioContentView: LMChatMessageContentView {
         cancelRetryContainerStackView.centerYAnchor.constraint(equalTo: audioPreviewContainerStackView.centerYAnchor).isActive = true
     }
     
-    open override func setDataView(_ data: LMChatMessageCell.ContentModel, delegate: LMChatAudioProtocol?, index: IndexPath) {
-        super.setDataView(data, delegate: delegate, index: index)
+    open override func setDataView(_ data: LMChatMessageCell.ContentModel, index: IndexPath) {
+        super.setDataView(data, index: index)
         updateRetryButton(data)
         if data.message?.isDeleted == true {
             audioPreviewContainerStackView.isHidden = true
         } else {
-            attachmentView(data, delegate: delegate, index: index)
+            attachmentView(data, delegate: audioDelegate, index: index)
         }
         audioPreviewContainerStackView.bringSubviewToFront(cancelRetryContainerStackView)
         bubbleView.layoutIfNeeded()

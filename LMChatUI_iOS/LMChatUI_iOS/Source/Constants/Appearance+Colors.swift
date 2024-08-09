@@ -33,10 +33,11 @@ public extension Appearance {
         public var previewSubtitleTextColor: UIColor = UIColor(r: 60, g: 60, b: 67, a: 0.6)
         
         public var incomingColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        public var outgoingColor = UIColor(red: 0.88, green: 0.99, blue: 0.98, alpha: 1)
-        
+        public var outgoingColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) //UIColor(red: 0.88, green: 0.99, blue: 0.98, alpha: 1)
+        public var appTintColor: UIColor = .link
+        public var pollOptionBorderColor: UIColor =  .link.withAlphaComponent(0.3)//UIColor(hex: 0x06C3AF, alpha: 0.3)
+        public var secondaryBackgroundColor: UIColor = UIColor(hex: 0xF2F2F7)
         // UIKit Colors
-        public var appTintColor: UIColor = .purple
         public var white: UIColor = .white
         public var black: UIColor = .black
         public var clear: UIColor = .clear
@@ -45,6 +46,5 @@ public extension Appearance {
         public var linkColor: UIColor = .link
         public var hashtagColor: UIColor = .blue
         public var systemYellow: UIColor = .systemYellow
-        public var secondaryBackgroundColor: UIColor = UIColor(hex: 0xF2F2F7)
     }
 }

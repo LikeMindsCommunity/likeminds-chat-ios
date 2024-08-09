@@ -66,7 +66,7 @@ public final class LMChatReportViewModel {
             delegate?.showHideLoaderView(isShow: false)
             
             if tags.isEmpty {
-                delegate?.showError(with: response.errorMessage ?? LMStringConstant.shared.genericErrorMessage, isPopVC: true)
+                delegate?.showError(withTitle: "Error", message: response.errorMessage ?? LMStringConstant.shared.genericErrorMessage, isPopVC: true)
                 return
             }
             
@@ -99,7 +99,7 @@ public final class LMChatReportViewModel {
         LMChatClient.shared.postReport(request: request) { [weak self] response in
             self?.delegate?.showHideLoaderView(isShow: false)
             guard let self, response.success else {
-                self?.delegate?.showError(with: response.errorMessage ?? "", isPopVC: true)
+                self?.delegate?.showError(withTitle: "Error", message: response.errorMessage ?? "", isPopVC: true)
                 return
             }
             

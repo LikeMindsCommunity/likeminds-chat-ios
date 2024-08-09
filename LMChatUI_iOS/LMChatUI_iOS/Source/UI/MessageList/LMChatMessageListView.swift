@@ -93,8 +93,9 @@ open class LMChatMessageListView: LMView {
             public var messageStatus: LMMessageStatus?
             public var tempId: String?
             public var hideLeftProfileImage: Bool?
+            public var pollData: LMChatPollView.ContentModel?
             
-            public init(messageId: String, memberTitle: String?, memberState: Int?, message: String?, timestamp: Int?, reactions: [Reaction]?, attachments: [Attachment]?, replied: [Message]?, isDeleted: Bool?, createdBy: String?, createdByImageUrl: String?, createdById: String?, isIncoming: Bool?, messageType: Int, createdTime: String?, ogTags: OgTags?, isEdited: Bool?, attachmentUploaded: Bool?, isShowMore: Bool, messageStatus: LMMessageStatus?, tempId: String?, hideLeftProfileImage: Bool?) {
+            public init(messageId: String, memberTitle: String?, memberState: Int?, message: String?, timestamp: Int?, reactions: [Reaction]?, attachments: [Attachment]?, replied: [Message]?, isDeleted: Bool?, createdBy: String?, createdByImageUrl: String?, createdById: String?, isIncoming: Bool?, messageType: Int, createdTime: String?, ogTags: OgTags?, isEdited: Bool?, attachmentUploaded: Bool?, isShowMore: Bool, messageStatus: LMMessageStatus?, tempId: String?, hideLeftProfileImage: Bool?, pollData: LMChatPollView.ContentModel?) {
                 self.messageId = messageId
                 self.memberTitle = memberTitle
                 self.message = message
@@ -117,6 +118,7 @@ open class LMChatMessageListView: LMView {
                 self.tempId = tempId
                 self.memberState = memberState
                 self.hideLeftProfileImage = hideLeftProfileImage
+                self.pollData = pollData
             }
         }
         
@@ -182,6 +184,7 @@ open class LMChatMessageListView: LMView {
         table.register(LMUIComponents.shared.chatMessageDocumentCell)
         table.register(LMUIComponents.shared.chatMessageAudioCell)
         table.register(LMUIComponents.shared.chatMessageLinkPreviewCell)
+        table.register(LMUIComponents.shared.chatMessagePollCell)
         table.dataSource = self
         table.delegate = self
         table.showsVerticalScrollIndicator = false
@@ -203,6 +206,7 @@ open class LMChatMessageListView: LMView {
     public let cellHeight: CGFloat = 60
     public weak var delegate: LMChatMessageListViewDelegate?
     public weak var cellDelegate: LMChatMessageCellDelegate?
+    public weak var pollDelegate: LMChatPollViewDelegate?
     public weak var chatroomHeaderCellDelegate: LMChatroomHeaderMessageCellDelegate?
     public weak var audioDelegate: LMChatAudioProtocol?
     public var tableSections:[ContentModel] = []
@@ -324,8 +328,10 @@ extension LMChatMessageListView: UITableViewDataSource, UITableViewDelegate {
         let item = tableSections[indexPath.section].data[indexPath.row]
         var tableViewCell: UITableViewCell = UITableViewCell()
         switch item.messageType {
-        case 0, 10:
+        case 0:
             tableViewCell =  cellFor(rowAt: indexPath, tableView: tableView)
+        case 10:
+            tableViewCell =  pollCellFor(rowAt: indexPath, tableView: tableView)
         case Self.chatroomHeader:
             if let cell = tableView.dequeueReusableCell(LMUIComponents.shared.chatroomHeaderMessageCell) {
                 cell.setData(with: .init(message: item), index: indexPath)
@@ -342,6 +348,25 @@ extension LMChatMessageListView: UITableViewDataSource, UITableViewDelegate {
         }
         tableViewCell.setNeedsDisplay()
         return tableViewCell
+    }
+    
+    
+    func pollCellFor(rowAt indexPath: IndexPath, tableView: UITableView) -> LMChatMessageCell {
+        let item = tableSections[indexPath.section].data[indexPath.row]
+        var cell: LMChatMessageCell?
+        cell = tableView.dequeueReusableCell(LMUIComponents.shared.chatMessagePollCell)
+        guard let cell else { return  LMChatMessageCell() }
+        let isSelected =  selectedItems.firstIndex(where: {$0.messageId == item.messageId})
+        cell.pollDelegate = pollDelegate
+        cell.delegate = cellDelegate
+        cell.setData(with: .init(message: item, isSelected: isSelected != nil), index: indexPath)
+        cell.currentIndexPath = indexPath
+        if self.isMultipleSelectionEnable, item.isDeleted == false {
+            cell.selectedButton.isHidden = false
+        } else {
+            cell.selectedButton.isHidden = true
+        }
+        return cell
     }
     
     func cellFor(rowAt indexPath: IndexPath, tableView: UITableView) -> LMChatMessageCell {
@@ -367,9 +392,11 @@ extension LMChatMessageListView: UITableViewDataSource, UITableViewDelegate {
         }
         guard let cell else { return  LMChatMessageCell() }
         let isSelected =  selectedItems.firstIndex(where: {$0.messageId == item.messageId})
-        cell.setData(with: .init(message: item, isSelected: isSelected != nil), delegate: audioDelegate, index: indexPath)
+        cell.setData(with: .init(message: item, isSelected: isSelected != nil), index: indexPath)
         cell.currentIndexPath = indexPath
         cell.delegate = cellDelegate
+        cell.audioDelegate = audioDelegate
+        
         if self.isMultipleSelectionEnable, item.isDeleted == false {
             cell.selectedButton.isHidden = false
         } else {

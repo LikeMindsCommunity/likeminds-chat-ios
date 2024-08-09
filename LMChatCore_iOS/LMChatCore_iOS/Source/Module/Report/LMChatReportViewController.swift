@@ -186,7 +186,7 @@ open class LMChatReportViewController: LMViewController {
                reason != placeholderText {
                 viewmodel?.reportContent(reason: otherReasonTextView.text)
             } else {
-                showError(with: "Please Enter Valid Reason", isPopVC: false)
+                showError(message: "Please Enter Valid Reason", isPopVC: false)
             }
         } else {
             viewmodel?.reportContent(reason: nil)

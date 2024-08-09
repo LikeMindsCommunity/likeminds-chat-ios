@@ -330,6 +330,7 @@ open class LMChatHomeFeedChatroomView: LMView {
         
         if data.messageType == 10 {
             let image = Constants.shared.images.pollIcon.withSystemImageConfig(pointSize: 14)?.withTintColor(Appearance.shared.colors.textColor) ?? UIImage()
+            attributedText.append(NSAttributedString(string: " "))
             attributedText.append(NSAttributedString(attachment: NSTextAttachment(image: image)))
         }
 

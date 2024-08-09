@@ -192,7 +192,7 @@ open class LMChatAttachmentBottomMessageView: LMView {
     }
 }
 
-extension LMChatAttachmentBottomMessageView: LMFeedTaggingTextViewProtocol {
+extension LMChatAttachmentBottomMessageView: LMChatTaggingTextViewProtocol {
     
     public func mentionStarted(with text: String, chatroomId: String) {
         guard isTaggingEnable == true else { return }

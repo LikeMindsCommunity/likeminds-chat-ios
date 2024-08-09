@@ -18,6 +18,6 @@ public struct Constants {
     public var images: Images = Images.shared
     
     public static func getProfileRoute(withUUID uuid: String) -> String {
-        return "route://member_profile?uuid=\(uuid)"
+        return "route://member_profile/\(uuid)"
     }
 }

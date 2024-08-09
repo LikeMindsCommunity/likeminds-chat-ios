@@ -12,6 +12,19 @@ class DataModelConverter {
     
     static let shared = DataModelConverter()
     
+    func convertPollOptionsIntoResultPollOptions(_ polls: [Poll]) -> [LMChatPollDataModel.Option] {
+        var pollOptions = polls.sorted(by: {($0.id ?? "0") < ($1.id ?? "0")})
+       return  pollOptions.map { poll in
+            return LMChatPollDataModel.Option(id: poll.id ?? "",
+                         option: poll.text ?? "",
+                         isSelected: poll.isSelected ?? false,
+                         voteCount: poll.noVotes ?? 0,
+                         percentage: poll.percentage ?? 0,
+                         addedBy: .init(userName: poll.member?.name ?? "",
+                                        userUUID: poll.member?.sdkClientInfo?.uuid ?? ""))
+        }
+    }
+    
     func convertPostConversation(uuid: String, communityId: String, request: PostConversationRequest, fileUrls: [LMChatAttachmentMediaData]?) -> Conversation {
         let miliseconds = Int(Date().millisecondsSince1970)
         let member = LMChatClient.shared.getCurrentMember()?.data?.member
@@ -37,6 +50,34 @@ class DataModelConverter {
             .replyChatroomId(request.repliedChatroomId)
             .attachmentUploaded(false)
             .conversationStatus(.sending)
+            .build()
+    }
+    
+    func convertPostPollConversation(uuid: String, communityId: String, request: PostPollConversationRequest) -> Conversation {
+        let miliseconds = Int(Date().millisecondsSince1970)
+        let member = LMChatClient.shared.getCurrentMember()?.data?.member
+        return Conversation.Builder()
+            .id(request.temporaryId)
+            .chatroomId(request.chatroomId)
+            .communityId(communityId)
+            .answer(request.text)
+            .state(request.state)
+            .createdEpoch(miliseconds)
+            .memberId(uuid)
+            .member(member)
+            .createdAt(LMCoreTimeUtils.generateCreateAtDate(miliseconds: Double(miliseconds), format: "HH:mm"))
+            .lastSeen(true)
+            .date(LMCoreTimeUtils.generateCreateAtDate(miliseconds: Double(miliseconds)))
+            .replyConversationId(request.repliedConversationId)
+            .localCreatedEpoch(miliseconds)
+            .temporaryId(request.temporaryId)
+            .isEdited(false)
+            .expiryTime(request.expiryTime)
+            .conversationStatus(.sending)
+            .polls(request.polls)
+            .pollType(request.pollType)
+            .multipleSelectNum(request.multipleSelectNo)
+            .multipleSelectState(request.multipleSelectState)
             .build()
     }
     

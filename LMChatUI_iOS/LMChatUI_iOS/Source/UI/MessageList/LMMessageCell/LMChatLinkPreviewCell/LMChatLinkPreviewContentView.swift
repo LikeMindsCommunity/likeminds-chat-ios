@@ -29,8 +29,8 @@ open class LMChatLinkPreviewContentView: LMChatMessageContentView {
         super.setupLayouts()
     }
     
-    open override func setDataView(_ data: LMChatMessageCell.ContentModel, delegate: LMChatAudioProtocol?, index: IndexPath) {
-        super.setDataView(data, delegate: delegate, index: index)
+    open override func setDataView(_ data: LMChatMessageCell.ContentModel, index: IndexPath) {
+        super.setDataView(data, index: index)
         if data.message?.isDeleted == true {
             linkPreview.isHidden = true
         } else {

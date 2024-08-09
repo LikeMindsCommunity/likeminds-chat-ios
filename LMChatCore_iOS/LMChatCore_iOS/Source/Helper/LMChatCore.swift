@@ -23,13 +23,18 @@ public protocol LMChatCoreCallback: AnyObject {
     /// - Parameter completionHandler: A closure to be called with new tokens.
     ///   The closure takes a tuple containing the new access token and refresh token.
     func onRefreshTokenExpired(_ completionHandler: (((accessToken: String, refreshToken: String)?) -> Void)?)
+    
+    /// Called when user click on user profile view
+    ///
+    /// - Parameter uuid: user id to uniquely identify the user
+    func userProfileViewHandle(withRoute route: String)
 }
 public class LMChatCore {
     
     private init() {}
     
     public static var shared: LMChatCore = .init()
-    //    static var analytics: LMFeedAnalyticsProtocol = LMFeedAnalyticsTracker()
+    //    static var analytics: LMChatAnalyticsProtocol = LMChatAnalyticsTracker()
     static private(set) var isInitialized: Bool = false
     // Callbacks for accessToken and refreshToken strategy
     private(set) var coreCallback: LMChatCoreCallback?

@@ -37,8 +37,8 @@ open class LMChatDocumentContentView: LMChatMessageContentView {
         cancelRetryContainerStackView.centerYAnchor.constraint(equalTo: docPreviewContainerStackView.centerYAnchor).isActive = true
     }
     
-    open override func setDataView(_ data: LMChatMessageCell.ContentModel, delegate: LMChatAudioProtocol?, index: IndexPath) {
-        super.setDataView(data, delegate: delegate, index: index)
+    open override func setDataView(_ data: LMChatMessageCell.ContentModel, index: IndexPath) {
+        super.setDataView(data, index: index)
         updateRetryButton(data)
         if data.message?.isDeleted == true {
             docPreviewContainerStackView.isHidden = true

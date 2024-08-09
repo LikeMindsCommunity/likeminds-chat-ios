@@ -32,7 +32,7 @@ public extension UIViewController {
 public protocol LMBaseViewControllerProtocol: AnyObject {
     func presentAlert(with alert: UIAlertController, animated: Bool)
     func showHideLoaderView(isShow: Bool)
-    func showError(with message: String, isPopVC: Bool)
+    func showError(withTitle title: String?, message: String, isPopVC: Bool)
     func popViewController(animated: Bool)
 }
 
@@ -200,7 +200,7 @@ open class LMViewController: UIViewController {
     
     open func showErrorAlert(_ title: String? = "Error", message: String?) {
         guard let message = message else { return }
-        self.showError(with: message, isPopVC: false)
+        self.showError(withTitle: title, message: message, isPopVC: false)
     }
     
     @objc open func errorMessage(notification: Notification) {
@@ -306,6 +306,8 @@ open class LMViewController: UIViewController {
         toastView.cornerRadius(with: 8)
         toastView.text = message
         toastView.numberOfLines = 0
+        toastView.paddingLeft = 8
+        toastView.paddingRight = 8
         toastView.alpha = 0
         toastView.translatesAutoresizingMaskIntoConstraints = false
         toastView.tag = -1001
@@ -362,8 +364,8 @@ extension LMViewController: LMBaseViewControllerProtocol {
         present(alert, animated: animated)
     }
     
-    open func showError(with message: String, isPopVC: Bool) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    open func showError(withTitle title: String? = "Error", message: String, isPopVC: Bool) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             if isPopVC {
