@@ -76,20 +76,20 @@ PODS:
   - libwebp/sharpyuv (1.3.2)
   - libwebp/webp (1.3.2):
     - libwebp/sharpyuv
-  - LikeMindsChatCore (1.5.0):
-    - AWSCognito
-    - AWSCore
-    - AWSS3
-    - Giphy
-    - LikeMindsChatData (~> 1.5.0)
-    - LikeMindsChatUI (~> 1.5.0)
-  - LikeMindsChatData (1.5.0):
+  - LikeMindsChat (1.5.0):
     - Alamofire
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseMessaging
     - RealmSwift (~> 10)
-  - LikeMindsChatUI (1.5.0):
+  - LikeMindsChatCore (1.5.1):
+    - AWSCognito
+    - AWSCore
+    - AWSS3
+    - Giphy
+    - LikeMindsChat
+    - LikeMindsChatUI (~> 1.5.1)
+  - LikeMindsChatUI (1.5.1):
     - Kingfisher (~> 7.0)
   - nanopb (3.30910.0):
     - nanopb/decode (= 3.30910.0)
@@ -104,6 +104,7 @@ PODS:
     - Realm (= 10.54.1)
 
 DEPENDENCIES:
+  - LikeMindsChat (from `../../likeminds-chat-ios-data/LikeMindsChat.podspec`)
   - LikeMindsChatCore (from `../LikeMindsChatCore.podspec`)
   - LikeMindsChatUI (from `../LikeMindsChatUI.podspec`)
 
@@ -126,13 +127,14 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - libwebp
-    - LikeMindsChatData
     - nanopb
     - PromisesObjC
     - Realm
     - RealmSwift
 
 EXTERNAL SOURCES:
+  LikeMindsChat:
+    :path: "../../likeminds-chat-ios-data/LikeMindsChat.podspec"
   LikeMindsChatCore:
     :path: "../LikeMindsChatCore.podspec"
   LikeMindsChatUI:
@@ -156,14 +158,14 @@ SPEC CHECKSUMS:
   Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
-  LikeMindsChatCore: 00419f4bc6c7e0121b6088f0424e0cd9300fcf99
-  LikeMindsChatData: 85247b543b04d03b4bda5c4f9085f30c48180222
-  LikeMindsChatUI: 040e8342d48db75cc144585c43f7534032242351
+  LikeMindsChat: 40ab36aaffb277dd5fa92647423e71d2cac4e978
+  LikeMindsChatCore: 24210917d6542b2b0a465bc2d3afd3d600a78d7c
+  LikeMindsChatUI: e8799a28a526d4cd9163e720ab7c3f2a69535b0d
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   Realm: 7c70fc7ae6ebfb635b29bc05ac1a6c5eeeb3c572
   RealmSwift: 12797d5849c90f37eafad8f44b4dadb8e558a806
 
-PODFILE CHECKSUM: 1a2119b780aa14d9703e1838c1f09a5cc146c50e
+PODFILE CHECKSUM: 0e32add7c47b2322ddc0b782aa75b2da87c09862
 
 COCOAPODS: 1.16.2
