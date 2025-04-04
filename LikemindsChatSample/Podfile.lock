@@ -76,20 +76,20 @@ PODS:
   - libwebp/sharpyuv (1.5.0)
   - libwebp/webp (1.5.0):
     - libwebp/sharpyuv
-  - LikeMindsChatCore (1.6.1):
+  - LikeMindsChatCore (1.7.0):
     - AWSCognito
     - AWSCore
     - AWSS3
     - Giphy
-    - LikeMindsChatData (~> 1.6.0)
-    - LikeMindsChatUI (~> 1.6.0)
-  - LikeMindsChatData (1.6.0):
+    - LikeMindsChatData (~> 1.7.0)
+    - LikeMindsChatUI (~> 1.7.0)
+  - LikeMindsChatData (1.7.0):
     - Alamofire (~> 5.7.1)
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseMessaging
     - RealmSwift (~> 10.40)
-  - LikeMindsChatUI (1.6.1):
+  - LikeMindsChatUI (1.7.0):
     - Kingfisher (~> 7.0)
   - nanopb (3.30910.0):
     - nanopb/decode (= 3.30910.0)
@@ -158,9 +158,9 @@ SPEC CHECKSUMS:
   Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
-  LikeMindsChatCore: ed8e991ead6567f7fa0f603ce4b74415c31c69cd
-  LikeMindsChatData: 2462b384d02db296fbd28a743f7fb2436c7c0c95
-  LikeMindsChatUI: f15f8dc243ea89fd612f9a23f211daf0cb78f951
+  LikeMindsChatCore: 5e36f2f81a195c5643d1dc533038d7375cc19e8a
+  LikeMindsChatData: 14683499e4cd992ee04baa6f07e95d9cd34df9f8
+  LikeMindsChatUI: 6e63a085d6a002dfa3354a0339b6f24df3dd5189
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   Realm: 16852517a207e98cc6acba9336b56c30d06d84ad

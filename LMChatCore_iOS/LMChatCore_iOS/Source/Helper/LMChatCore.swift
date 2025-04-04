@@ -64,14 +64,21 @@ public class LMChatCore {
     ///
     /// This function initializes necessary components for the chat functionality,
     /// including the AWS manager and Giphy API configuration.
-    public func setupChat(deviceId: String? = nil) {
-
-        LMChatClient.shared.setTokenManager(with: self)
-        self.deviceId = deviceId
-
-        LMChatAWSManager.shared.initialize()
-        GiphyAPIConfiguration.configure()
-    }
+    public func setupChat(
+                deviceId: String? = nil,
+                excludedConversationStates: [ConversationState]? = nil
+            ) {
+                
+                _ = LMChatClient.Builder()
+                    .excludedConversationStates(excludedConversationStates)
+                    .setTokenManager(self)
+                    .build()
+                
+                self.deviceId = deviceId
+                
+                LMChatAWSManager.shared.initialize()
+                GiphyAPIConfiguration.configure()
+            }
 
     // Method to set a custom callback
     public func setCallback(_ callback: LMChatCoreCallback) {
@@ -427,11 +434,6 @@ public class LMChatCore {
             LMChatReportViewController.self,
             LMChatAttachmentViewController.self,
         ]
-    }
-
-    /// Method for exclude/filter conversation state
-    public func excludeConversations(_ states: [ConversationState]) {
-        LMChatClient.shared.excludeConversationStates(states)
     }
 }
 

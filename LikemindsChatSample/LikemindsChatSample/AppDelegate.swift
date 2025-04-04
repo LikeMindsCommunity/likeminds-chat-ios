@@ -10,6 +10,7 @@ import FirebaseMessaging
 import LikeMindsChatCore
 import LikeMindsChatUI
 import UIKit
+import LikeMindsChatData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
