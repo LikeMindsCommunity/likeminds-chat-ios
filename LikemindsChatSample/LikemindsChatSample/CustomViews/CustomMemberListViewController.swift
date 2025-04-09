@@ -24,13 +24,13 @@ open class CustomMemberListViewController: LMChatMemberListViewController {
     
 }
 
-open class CustomDMFeedViewController: LMChatDMFeedViewController {
+open class CustomDMFeedViewController: LMNetworkingChatViewController {
     
     
     open override func setupAppearance() {
         super.setupAppearance()
-        newDMFabButton.backgroundColor = .systemRed
-        newDMFabButton.setTitleColor(.systemYellow, for: .normal)
+        startNewDMFabButton.backgroundColor = .systemRed
+        startNewDMFabButton.setTitleColor(.systemYellow, for: .normal)
     }
     
 }

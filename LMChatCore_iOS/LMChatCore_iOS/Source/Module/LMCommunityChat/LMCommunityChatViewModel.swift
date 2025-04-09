@@ -1,5 +1,5 @@
 //
-//  LMChatGroupFeedViewModel.swift
+//  LMCommunityChatViewModel.swift
 //  LikeMindsChatCore
 //
 //  Created by Pushpendra Singh on 12/02/24.
@@ -9,7 +9,7 @@ import Foundation
 import LikeMindsChatData
 import LikeMindsChatUI
 
-public protocol LMChatGroupFeedViewModelProtocol: AnyObject {
+public protocol LMCommunityChatViewModelProtocol: AnyObject {
     func reloadData()
     func updateHomeFeedChatroomsData()
     func updateHomeFeedExploreCountData()
@@ -27,9 +27,9 @@ public class LMChatBaseViewModel {
     }
 }
 
-public class LMChatGroupFeedViewModel: LMChatBaseViewModel {
+public class LMCommunityChatViewModel: LMChatBaseViewModel {
 
-    weak var delegate: LMChatGroupFeedViewModelProtocol?
+    weak var delegate: LMCommunityChatViewModelProtocol?
     var chatrooms: [Chatroom] = []
     var exploreTabCountData: GetExploreTabCountResponse?
     var secretChatroomInvites: [ChannelInvite] = []
@@ -37,17 +37,17 @@ public class LMChatGroupFeedViewModel: LMChatBaseViewModel {
 
     var secretChatroomInvitesPageCount = 1
 
-    init(_ viewController: LMChatGroupFeedViewModelProtocol) {
+    init(_ viewController: LMCommunityChatViewModelProtocol) {
         self.delegate = viewController
     }
 
-    public static func createModule() throws -> LMChatGroupFeedViewController {
+    public static func createModule() throws -> LMCommunityChatViewController {
         guard LMChatCore.isInitialized else {
             throw LMChatError.chatNotInitialized
         }
 
         let viewController = LMCoreComponents.shared.groupChatFeedScreen.init()
-        viewController.viewModel = LMChatGroupFeedViewModel(viewController)
+        viewController.viewModel = LMCommunityChatViewModel(viewController)
         return viewController
     }
 
@@ -266,7 +266,7 @@ public class LMChatGroupFeedViewModel: LMChatBaseViewModel {
 
 }
 
-extension LMChatGroupFeedViewModel: HomeFeedClientObserver {
+extension LMCommunityChatViewModel: HomeFeedClientObserver {
 
     public func initial(_ chatrooms: [Chatroom]) {
         reloadChatroomsData(data: chatrooms)

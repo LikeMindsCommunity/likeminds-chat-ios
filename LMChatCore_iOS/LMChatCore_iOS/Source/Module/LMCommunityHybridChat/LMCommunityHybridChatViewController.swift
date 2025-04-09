@@ -1,5 +1,5 @@
 //
-//  LMChatFeedViewController.swift
+//  LMCommunityHybridChatViewController.swift
 //  LikeMindsChatCore
 //
 //  Created by Pushpendra Singh on 14/06/24.
@@ -8,9 +8,9 @@
 import Foundation
 import LikeMindsChatUI
 
-open class LMChatFeedViewController: LMViewController {
+open class LMCommunityHybridChatViewController: LMViewController {
     
-    var viewModel: LMChatFeedViewModel?
+    var viewModel: LMCommunityHybridChatViewModel?
     
     open private(set) lazy var containerStackView: LMStackView = {
         let view = LMStackView().translatesAutoresizingMaskIntoConstraints()
@@ -122,11 +122,11 @@ open class LMChatFeedViewController: LMViewController {
     }
     
     open func addControllers() {
-        guard let homefeedvc = try? LMChatGroupFeedViewModel.createModule() else { return }
-        viewControllers.append(homefeedvc)
+        guard let communityChatViewController = try? LMCommunityChatViewModel.createModule() else { return }
+        viewControllers.append(communityChatViewController)
         
-        guard let homefeedvc2 = try? LMChatDMFeedViewModel.createModule() else { return }
-        viewControllers.append(homefeedvc2)
+        guard let networkingChatViewController = try? LMNetworkingChatViewModel.createModule() else { return }
+        viewControllers.append(networkingChatViewController)
     }
 
     
@@ -143,7 +143,7 @@ open class LMChatFeedViewController: LMViewController {
     }
 }
 
-extension LMChatFeedViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+extension LMCommunityHybridChatViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let index = viewControllers.firstIndex(of: viewController),
@@ -171,7 +171,7 @@ extension LMChatFeedViewController: UIPageViewControllerDataSource, UIPageViewCo
     }
 }
 
-extension LMChatFeedViewController: LMChatFeedViewModelProtocol, UINavigationControllerDelegate {
+extension LMCommunityHybridChatViewController: LMCommunityHybridChatViewModelProtocol, UINavigationControllerDelegate {
     public func showDMTab() {
         if viewModel?.dmTab?.hideDMTab == true {
             self.segmentControl.isHidden = true

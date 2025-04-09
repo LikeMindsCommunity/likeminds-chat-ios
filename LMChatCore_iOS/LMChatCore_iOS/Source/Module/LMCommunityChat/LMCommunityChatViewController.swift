@@ -1,5 +1,5 @@
 //
-//  LMChatGroupFeedViewController.swift
+//  LMCommunityChatViewController.swift
 //  LikeMindsChatCore
 //
 //  Created by Pushpendra Singh on 12/02/24.
@@ -8,9 +8,9 @@
 import Foundation
 import LikeMindsChatUI
 
-open class LMChatGroupFeedViewController: LMViewController {
+open class LMCommunityChatViewController: LMViewController {
 
-    var viewModel: LMChatGroupFeedViewModel?
+    var viewModel: LMCommunityChatViewModel?
 
     open private(set) lazy var feedListView: LMChatHomeFeedListView = {
         let view = LMChatHomeFeedListView()
@@ -117,7 +117,7 @@ open class LMChatGroupFeedViewController: LMViewController {
     }
 }
 
-extension LMChatGroupFeedViewController: LMChatGroupFeedViewModelProtocol {
+extension LMCommunityChatViewController: LMCommunityChatViewModelProtocol {
 
     public func updateHomeFeedChatroomsData() {
         let chatrooms = (viewModel?.chatrooms ?? []).compactMap({ chatroom in
@@ -184,7 +184,7 @@ extension LMChatGroupFeedViewController: LMChatGroupFeedViewModelProtocol {
     public func reloadData() {}
 }
 
-extension LMChatGroupFeedViewController: LMHomFeedListViewDelegate {
+extension LMCommunityChatViewController: LMHomFeedListViewDelegate {
     public func didTapOnCell(indexPath: IndexPath) {
         switch feedListView.tableSections[indexPath.section].sectionType {
         case .exploreTab:

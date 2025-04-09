@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  LikemindsChatSample
+//  community-hybrid-chat
 //
-//  Created by Pushpendra Singh on 13/12/23.
+//  Created by Anurag Tyagi on 04/04/25.
 //
 
 import FirebaseMessaging
@@ -25,18 +25,19 @@ extension UIViewController {
     }
 }
 
-class ViewController: LMViewController {
+class CommunityHybridChatViewController: LMViewController {
 
     @IBOutlet weak var apiKeyField: UITextField?
     @IBOutlet weak var userIdField: UITextField?
     @IBOutlet weak var userNameField: UITextField?
     @IBOutlet weak var loginButton: UIButton?
 
-    static func createViewController() -> ViewController {
+    static func createViewController() -> CommunityHybridChatViewController {
         let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         return main.instantiateViewController(
-            withIdentifier: "LoginViewController") as! ViewController
+            withIdentifier: "LoginViewController") as! CommunityHybridChatViewController
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         isSavedData()
@@ -44,8 +45,8 @@ class ViewController: LMViewController {
 
     func moveToNextScreen() {
         self.showHideLoaderView(isShow: false, backgroundColor: .clear)
-        let homeVC = HomeViewController()
-        let navigation = UINavigationController(rootViewController: homeVC)
+        let communityHybridChatViewController = LMCommunityHybridChatViewModel.createModule()
+        let navigation = UINavigationController(rootViewController: communityHybridChatViewController)
         navigation.modalPresentationStyle = .overFullScreen
         self.window?.rootViewController = navigation
     }
@@ -111,55 +112,5 @@ class ViewController: LMViewController {
             title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
-    }
-}
-
-class HomeViewController: UIViewController {
-
-    private let chatButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Open Chat", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 8
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-
-    private func setupUI() {
-        view.backgroundColor = .white
-        title = "Home"
-
-        view.addSubview(chatButton)
-
-        NSLayoutConstraint.activate([
-            chatButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            chatButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            chatButton.widthAnchor.constraint(equalToConstant: 200),
-            chatButton.heightAnchor.constraint(equalToConstant: 44),
-        ])
-
-        chatButton.addTarget(
-            self, action: #selector(chatButtonTapped), for: .touchUpInside)
-    }
-
-    @objc private func chatButtonTapped() {
-        do {
-            let chatFeedVC = try LMCommunityHybridChatViewModel.createModule()
-            navigationController?.pushViewController(chatFeedVC, animated: true)
-        } catch {
-            let alert = UIAlertController(
-                title: "Error",
-                message: "Failed to open chat: \(error.localizedDescription)",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
-        }
     }
 }

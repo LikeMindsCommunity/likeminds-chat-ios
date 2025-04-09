@@ -4,6 +4,7 @@
 build/
 *.pbxuser
 buildServer.json
+GoogleService-Info.plist
 .vscode
 !default.pbxuser
 *.mode1v3
@@ -24,6 +25,7 @@ DerivedData
 # CocoaPods
 Pods
 # Othercustomfolders
+*/Podfile.lock
 LMChatMMFramework
 ProdLMChatMMFramework
 BetaLMChatMMFramework

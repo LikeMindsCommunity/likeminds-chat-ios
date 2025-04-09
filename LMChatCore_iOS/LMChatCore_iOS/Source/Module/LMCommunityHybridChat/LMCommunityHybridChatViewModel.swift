@@ -1,5 +1,5 @@
 //
-//  LMChatFeedViewModel.swift
+//  LMCommunityHybridChatViewModel.swift
 //  LikeMindsChatCore
 //
 //  Created by Pushpendra Singh on 14/06/24.
@@ -9,22 +9,22 @@ import Foundation
 import LikeMindsChatData
 import LikeMindsChatUI
 
-public protocol LMChatFeedViewModelProtocol: AnyObject {
+public protocol LMCommunityHybridChatViewModelProtocol: AnyObject {
     func showDMTab()
 }
 
-public class LMChatFeedViewModel {
+public class LMCommunityHybridChatViewModel {
     
-    weak var delegate: LMChatFeedViewModelProtocol?
+    weak var delegate: LMCommunityHybridChatViewModelProtocol?
     var dmTab: CheckDMTabResponse?
     
-    init(_ viewController: LMChatFeedViewModelProtocol) {
+    init(_ viewController: LMCommunityHybridChatViewModelProtocol) {
         self.delegate = viewController
     }
     
-    public static func createModule() -> LMChatFeedViewController {
-        let viewController = LMChatFeedViewController()
-        viewController.viewModel = LMChatFeedViewModel(viewController)
+    public static func createModule() -> LMCommunityHybridChatViewController {
+        let viewController = LMCommunityHybridChatViewController()
+        viewController.viewModel = LMCommunityHybridChatViewModel(viewController)
         return viewController
     }
     
