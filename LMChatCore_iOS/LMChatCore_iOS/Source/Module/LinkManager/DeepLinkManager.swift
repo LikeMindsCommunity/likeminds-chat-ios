@@ -75,7 +75,7 @@ import Foundation
                         LMSharedPreferences.setString(routeUrl, forKey: .tempDeeplinkUrl)
                         return
                     }
-                    if let vc = topMostController as? UINavigationController, let homeFeedVC = vc.topViewController as? LMChatGroupFeedViewController {
+                    if let vc = topMostController as? UINavigationController, let homeFeedVC = vc.topViewController as? LMCommunityChatViewController {
                         homeFeedVC.navigationController?.pushViewController(viewController, animated: true)
                     } else {
                         let chatMessageViewController = UINavigationController(rootViewController: viewController)
