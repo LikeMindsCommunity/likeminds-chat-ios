@@ -29,7 +29,7 @@ public protocol LMMessageListViewModelProtocol: LMBaseViewControllerProtocol {
 }
 
 public typealias ChatroomDetailsExtra = (
-    chatroomId: String, conversationId: String?, reportedConversationId: String?
+    chatroomId: String, conversationId: String?, reportedConversationId: String?, replyPrivatelyExtras: LMChatReplyPrivatelyExtra?
 )
 
 public final class LMChatMessageListViewModel: LMChatBaseViewModel {
@@ -59,6 +59,9 @@ public final class LMChatMessageListViewModel: LMChatBaseViewModel {
     var showList: Int?
     var loggedInUserData: User?
     var isMarkReadProgress: Bool = false
+    private var replyPrivatelyMetadata: [String: Any] = [
+        "type": "REPLY_PRIVATELY"
+    ]
 
     init(
         delegate: LMMessageListViewModelProtocol?,
@@ -69,8 +72,18 @@ public final class LMChatMessageListViewModel: LMChatBaseViewModel {
         self.chatroomDetailsExtra = chatroomExtra
     }
 
+    private func updateReplyPrivatelyMetadata(with extras: LMChatReplyPrivatelyExtra?) {
+        guard let extras = extras else { return }
+        
+        replyPrivatelyMetadata["source_chatroom_id"] = extras.sourceChatroomId
+        replyPrivatelyMetadata["source_chatroom_name"] = extras.sourceChatroomName
+        replyPrivatelyMetadata["source_conversation"] = extras.sourceConversation
+    }
+
     public static func createModule(
-        withChatroomId chatroomId: String, conversationId: String?
+        withChatroomId chatroomId: String,
+        conversationId: String?,
+        replyPrivatelyExtras: LMChatReplyPrivatelyExtra? = nil
     ) throws -> LMChatMessageListViewController {
         guard LMChatCore.isInitialized else {
             throw LMChatError.chatNotInitialized
@@ -79,14 +92,14 @@ public final class LMChatMessageListViewModel: LMChatBaseViewModel {
         let viewcontroller = LMCoreComponents.shared.messageListScreen.init()
         let viewmodel = Self.init(
             delegate: viewcontroller,
-            chatroomExtra: (chatroomId, conversationId, nil))
-
+            chatroomExtra: (chatroomId, conversationId, nil, replyPrivatelyExtras))
+        
         viewcontroller.viewModel = viewmodel
         return viewcontroller
     }
 
     @objc func conversationSyncCompleted(_ notification: Notification) {
-        if chatroomViewData?.isConversationStored == false
+        if chatroomViewData?.isConversationStored == false 
             || chatroomViewData == nil
         {
             self.getInitialData()
@@ -175,6 +188,7 @@ public final class LMChatMessageListViewModel: LMChatBaseViewModel {
             return
         }
         chatroomViewData = chatroom
+
         if let chatroomViewData = chatroomViewData,
             isOtherUserAIChatbot(chatroom: chatroomViewData)
         {
@@ -236,6 +250,9 @@ public final class LMChatMessageListViewModel: LMChatBaseViewModel {
         if chatroomViewData?.type == ChatroomType.directMessage {
             delegate?.directMessageStatus()
             checkDMStatus()
+            if let replyPrivatelyExtras = chatroomDetailsExtra.replyPrivatelyExtras {
+                updateReplyPrivatelyMetadata(with: replyPrivatelyExtras)
+            }
         } else {
             checkDMStatus(requestFrom: "group_channel")
         }

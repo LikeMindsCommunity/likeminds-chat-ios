@@ -7,9 +7,11 @@
 
 import Foundation
 
-enum LMSharedPreferencesKeys: String {
+public enum LMSharedPreferencesKeys: String {
     case tempDeeplinkUrl = "$_deeplink_url"
     case isDMWithRequestEnabled = "$_isDMWithRequestEnabled"
+    case communityConfigurations = "community_configurations"
+    case replyPrivatelyConfiguration = "reply_privately_configuration"
 }
 
 class LMSharedPreferences {
@@ -53,5 +55,14 @@ class LMSharedPreferences {
     
     static func bool(forKey key: String) -> Bool? {
         shared.value(forKey: key) as? Bool
+    }
+    
+    static func getData(forKey key: LMSharedPreferencesKeys) -> Data? {
+        shared.data(forKey: key.rawValue)
+    }
+    
+    static func setValue(_ value: Data, key: String) {
+        shared.set(value, forKey: key)
+        shared.synchronize()
     }
 }

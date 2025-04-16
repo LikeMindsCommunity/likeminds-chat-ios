@@ -11,6 +11,24 @@ import LikeMindsChatData
 import LikeMindsChatUI
 import UIKit
 
+public class LMChatReplyPrivatelyExtra {
+    // MARK: - Properties
+    public let sourceChatroomName: String
+    public let sourceChatroomId: String
+    public let sourceConversation: ConversationViewData
+
+    // MARK: - Initialization
+    public init(
+        sourceChatroomName: String,
+        sourceChatroomId: String,
+        sourceConversation: ConversationViewData
+    ) {
+        self.sourceChatroomName = sourceChatroomName
+        self.sourceChatroomId = sourceChatroomId
+        self.sourceConversation = sourceConversation
+    }
+}
+
 open class LMChatMessageListViewController: LMViewController {
     // MARK: UI Elements
     open private(set) lazy var bottomMessageBoxView:
@@ -1022,6 +1040,25 @@ extension LMChatMessageListViewController: LMChatMessageListViewDelegate {
         }
         actions.append(replyAction)
 
+        // Check if Reply Privately should be shown
+        if let dmStatus = viewModel?.dmStatus,
+            let chatroomType = viewModel?.chatroomViewData?.type?.rawValue,
+            LMConversationUtils.toShowReplyPrivatelyOption(
+                selectedConversation: item,
+                selectedChatTheme: LMChatCore.currentTheme,
+                checkDMStatusResponse: dmStatus,
+                chatroomType: chatroomType
+            )
+        {
+            let replyPrivatelyAction = UIAction(
+                title: Constants.shared.strings.replyPrivately,
+                image: Constants.shared.images.replyIcon
+            ) { [weak self] action in
+                self?.handleReplyPrivately(for: item)
+            }
+            actions.append(replyPrivatelyAction)
+        }
+
         if viewModel?.isChatroomType(type: .directMessage) == false,
             item.isIncoming == true,
             item.messageType != LMChatMessageListView.chatroomHeader
@@ -1106,6 +1143,106 @@ extension LMChatMessageListViewController: LMChatMessageListViewDelegate {
         actions.append(selectAction)
 
         return UIMenu(title: "", children: actions)
+    }
+
+    private func handleReplyPrivately(for conversation: ConversationViewData) {
+        guard
+            let memberUUID = conversation.member?.sdkClientInfo?.uuid,
+            let chatroomName = viewModel?.chatroomViewData?.header
+        else {
+            self.showErrorAlert(message: "Something went wrong")
+            return
+        }
+
+        let extra = LMChatReplyPrivatelyExtra(
+            sourceChatroomName: chatroomName,
+            sourceChatroomId: viewModel?.chatroomId ?? "",
+            sourceConversation: conversation
+        )
+
+        let checkDMLimitRequest = CheckDMLimitRequest.builder().uuid(
+            memberUUID
+        ).build()
+
+        LMChatClient.shared.checkDMLimit(request: checkDMLimitRequest) {
+            [weak self] response in
+            if response.success {
+                if let chatroomId = response.data?.chatroomId {
+                    DispatchQueue.main.async {
+                        NavigationScreen.shared.perform(
+                            .chatroom(
+                                chatroomId: "\(chatroomId)",
+                                conversationID: nil, replyPrivatelyExtras: extra
+                            ),
+                            from: self!,
+                            params: extra
+                        )
+                    }
+                } else {
+                    if LMDMChatUtil.isDMRequestEnabled() {
+                        if response.data?.isRequestDMLimitExceeded == false {
+                            LMDMChatUtil.createOrGetExistingDMChatroom(
+                                userUUID: memberUUID
+                            ) { [weak self] chatroomId, errorMessage in
+                                guard let self else { return }
+
+                                if let errorMessage = errorMessage {
+                                    // Show error in snackbar (consistent with other error handling in the class)
+                                    self.showErrorAlert(message: errorMessage)
+                                    return
+                                }
+
+                                guard let chatroomId = chatroomId else {
+                                    return
+                                }
+
+                                // Use the existing navigation pattern
+                                DispatchQueue.main.async {
+                                    NavigationScreen.shared.perform(
+                                        .chatroom(
+                                            chatroomId: chatroomId,
+                                            conversationID: nil,
+                                            replyPrivatelyExtras: extra),
+                                        from: self,
+                                        params: extra
+                                    )
+                                }
+                            }
+                        } else {
+                            self?.showErrorAlert(message: response.errorMessage)
+                        }
+                    } else {
+                        LMDMChatUtil.createOrGetExistingDMChatroom(
+                            userUUID: memberUUID
+                        ) { [weak self] chatroomId, errorMessage in
+                            guard let self else { return }
+
+                            if let errorMessage = errorMessage {
+                                // Show error in snackbar (consistent with other error handling in the class)
+                                self.showErrorAlert(message: errorMessage)
+                                return
+                            }
+
+                            guard let chatroomId = chatroomId else { return }
+
+                            // Use the existing navigation pattern
+                            DispatchQueue.main.async {
+                                NavigationScreen.shared.perform(
+                                    .chatroom(
+                                        chatroomId: chatroomId,
+                                        conversationID: nil,
+                                        replyPrivatelyExtras: extra),
+                                    from: self,
+                                    params: extra
+                                )
+                            }
+                        }
+                    }
+                }
+            } else {
+                self?.showErrorAlert(message: response.errorMessage)
+            }
+        }
     }
 
     public func contextMenuForChatroomData(
