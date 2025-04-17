@@ -20,4 +20,5 @@ public struct Constants {
     public static func getProfileRoute(withUUID uuid: String) -> String {
         return "route://member_profile/\(uuid)"
     }
+    
 }

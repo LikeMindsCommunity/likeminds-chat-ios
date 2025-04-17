@@ -50,4 +50,8 @@ public struct LMCoreComponents {
     // MARK: Poll Result
     public var pollResultScreen: LMChatPollResultScreen.Type = LMChatPollResultScreen.self
     public var pollResultList: LMChatPollResultListScreen.Type = LMChatPollResultListScreen.self
+    
+    //MARK : AI CHAT BOT
+
+    public var aiChatBotIntiationScreen : LMChatAIBotInitiationViewController.Type = LMChatAIBotInitiationViewController.self
 }

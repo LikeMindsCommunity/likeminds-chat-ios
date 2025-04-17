@@ -133,11 +133,6 @@ open class LMViewController: UIViewController {
         super.init(coder: coder)
     }
 
-    open override func loadView() {
-        super.loadView()
-        setupViews()
-        setupLayouts()
-    }
 
     open override func viewDidLoad() {
         super.viewDidLoad()

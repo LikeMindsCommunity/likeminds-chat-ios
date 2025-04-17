@@ -46,7 +46,7 @@ public class LMCommunityChatViewModel: LMChatBaseViewModel {
             throw LMChatError.chatNotInitialized
         }
 
-        let viewController = LMCoreComponents.shared.groupChatFeedScreen.init()
+        let viewController = LMCoreComponents.shared.communityChatScreen.init()
         viewController.viewModel = LMCommunityChatViewModel(viewController)
         return viewController
     }

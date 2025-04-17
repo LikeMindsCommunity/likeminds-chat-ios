@@ -121,5 +121,8 @@ public extension Constants {
         
         public var equalIcon = loadSystemImage(with: "equal")
         public var plusCircleIcon = loadSystemImage(with: "plus.circle")
+        
+        public var aiChatBotButton = UIImage(named:"lm_ai_chat_bot")
+    
     }
 }

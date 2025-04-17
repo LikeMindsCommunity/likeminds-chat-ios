@@ -75,6 +75,9 @@ public final class LMChatMessageListViewModel: LMChatBaseViewModel {
         guard LMChatCore.isInitialized else {
             throw LMChatError.chatNotInitialized
         }
+        
+        print("/chatview controller intialized")
+        
 
         let viewcontroller = LMCoreComponents.shared.messageListScreen.init()
         let viewmodel = Self.init(

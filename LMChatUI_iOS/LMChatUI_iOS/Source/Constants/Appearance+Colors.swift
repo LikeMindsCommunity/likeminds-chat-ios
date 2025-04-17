@@ -46,5 +46,7 @@ public extension Appearance {
         public var linkColor: UIColor = .link
         public var hashtagColor: UIColor = .blue
         public var systemYellow: UIColor = .systemYellow
+        
+        public var aiChatBotButtonColor = UIColor(red: 2/255, green: 13/255, blue: 66/255, alpha: 1.0)
     }
 }

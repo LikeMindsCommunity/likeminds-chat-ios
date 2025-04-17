@@ -137,4 +137,6 @@ public struct LMUIComponents {
         .self
     public var resultPollOptionCell: LMChatPollResultCollectionCell.Type =
         LMChatPollResultCollectionCell.self
+    
+    public var lmChatAIButton : LMChatAIButton.Type = LMChatAIButton.self
 }

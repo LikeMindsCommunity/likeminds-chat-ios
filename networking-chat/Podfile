@@ -11,9 +11,10 @@ target 'networking-chat' do
   use_frameworks!
 
   # Pods for networking-chat
- pod 'LikeMindsChatData', path: '../../likeminds-chat-ios-data/LikeMindsChatData.podspec'
+ pod 'LikeMindsChatData', path: '~>1.7.1'
  pod 'LikeMindsChatUI', path: '../LikeMindsChatUI.podspec'
- pod 'LikeMindsChatCore', path: '../LikeMindsChatCore.podspec'
+ pod 'LikeMindsChatCore', '~>1.7.1'
+
  
 end
 

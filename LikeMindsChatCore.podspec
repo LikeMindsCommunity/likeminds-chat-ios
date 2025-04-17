@@ -22,5 +22,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'Giphy'
   spec.dependency 'LikeMindsChatData', '~>1.7.1'
   spec.dependency 'LikeMindsChatUI', '~>1.7.1'
+  spec.dependency  'lottie-ios', '~>4.5.1'
   
 end

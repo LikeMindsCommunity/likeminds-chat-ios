@@ -7,145 +7,145 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		99F9E9AFC0F3D427B5F1A241 /* Pods_networking_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A698A2604F06B8D474CCD6F /* Pods_networking_chat.framework */; };
+		D8697118447495F98DF0DC36 /* Pods_ai_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DAAA50F43300128E595607 /* Pods_ai_chat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		152F36FAA2F946A242E37272 /* Pods-networking-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-networking-chat.release.xcconfig"; path = "Target Support Files/Pods-networking-chat/Pods-networking-chat.release.xcconfig"; sourceTree = "<group>"; };
-		4A698A2604F06B8D474CCD6F /* Pods_networking_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_networking_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9104FEE92DA002F300B2A337 /* networking-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "networking-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B063FA76A9BEB5D7B7CA6BAB /* Pods-networking-chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-networking-chat.debug.xcconfig"; path = "Target Support Files/Pods-networking-chat/Pods-networking-chat.debug.xcconfig"; sourceTree = "<group>"; };
+		3FCD2416C52DFEA5AB20C52F /* Pods-ai-chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ai-chat.debug.xcconfig"; path = "Target Support Files/Pods-ai-chat/Pods-ai-chat.debug.xcconfig"; sourceTree = "<group>"; };
+		8410B8BF2DA90D7400749F4A /* ai-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ai-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A367069A2D7479147B50E1A4 /* Pods-ai-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ai-chat.release.xcconfig"; path = "Target Support Files/Pods-ai-chat/Pods-ai-chat.release.xcconfig"; sourceTree = "<group>"; };
+		D2DAAA50F43300128E595607 /* Pods_ai_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ai_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		9104FEFB2DA002F600B2A337 /* Exceptions for "networking-chat" folder in "networking-chat" target */ = {
+		8410B8D12DA90D7700749F4A /* Exceptions for "ai-chat" folder in "ai-chat" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 9104FEE82DA002F300B2A337 /* networking-chat */;
+			target = 8410B8BE2DA90D7400749F4A /* ai-chat */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9104FEEB2DA002F300B2A337 /* networking-chat */ = {
+		8410B8C12DA90D7400749F4A /* ai-chat */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				9104FEFB2DA002F600B2A337 /* Exceptions for "networking-chat" folder in "networking-chat" target */,
+				8410B8D12DA90D7700749F4A /* Exceptions for "ai-chat" folder in "ai-chat" target */,
 			);
-			path = "networking-chat";
+			path = "ai-chat";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9104FEE62DA002F300B2A337 /* Frameworks */ = {
+		8410B8BC2DA90D7400749F4A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F9E9AFC0F3D427B5F1A241 /* Pods_networking_chat.framework in Frameworks */,
+				D8697118447495F98DF0DC36 /* Pods_ai_chat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15AFAFBE88B06539A512B1A3 /* Pods */ = {
+		4217FC78A30AE7F749A01A7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B063FA76A9BEB5D7B7CA6BAB /* Pods-networking-chat.debug.xcconfig */,
-				152F36FAA2F946A242E37272 /* Pods-networking-chat.release.xcconfig */,
+				D2DAAA50F43300128E595607 /* Pods_ai_chat.framework */,
 			);
-			path = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9104FEE02DA002F300B2A337 = {
+		8410B8B62DA90D7400749F4A = {
 			isa = PBXGroup;
 			children = (
-				9104FEEB2DA002F300B2A337 /* networking-chat */,
-				9104FEEA2DA002F300B2A337 /* Products */,
-				15AFAFBE88B06539A512B1A3 /* Pods */,
-				AFC227D3100049E480D85545 /* Frameworks */,
+				8410B8C12DA90D7400749F4A /* ai-chat */,
+				8410B8C02DA90D7400749F4A /* Products */,
+				E4BC1B968B00364CD73A21D0 /* Pods */,
+				4217FC78A30AE7F749A01A7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		9104FEEA2DA002F300B2A337 /* Products */ = {
+		8410B8C02DA90D7400749F4A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9104FEE92DA002F300B2A337 /* networking-chat.app */,
+				8410B8BF2DA90D7400749F4A /* ai-chat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AFC227D3100049E480D85545 /* Frameworks */ = {
+		E4BC1B968B00364CD73A21D0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4A698A2604F06B8D474CCD6F /* Pods_networking_chat.framework */,
+				3FCD2416C52DFEA5AB20C52F /* Pods-ai-chat.debug.xcconfig */,
+				A367069A2D7479147B50E1A4 /* Pods-ai-chat.release.xcconfig */,
 			);
-			name = Frameworks;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9104FEE82DA002F300B2A337 /* networking-chat */ = {
+		8410B8BE2DA90D7400749F4A /* ai-chat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9104FEFC2DA002F600B2A337 /* Build configuration list for PBXNativeTarget "networking-chat" */;
+			buildConfigurationList = 8410B8D22DA90D7700749F4A /* Build configuration list for PBXNativeTarget "ai-chat" */;
 			buildPhases = (
-				B345E7C81A49627469FB792A /* [CP] Check Pods Manifest.lock */,
-				9104FEE52DA002F300B2A337 /* Sources */,
-				9104FEE62DA002F300B2A337 /* Frameworks */,
-				9104FEE72DA002F300B2A337 /* Resources */,
-				4458854CC320CD9D387B0A8F /* [CP] Embed Pods Frameworks */,
+				F1B5ED28E3F30688956D4EF8 /* [CP] Check Pods Manifest.lock */,
+				8410B8BB2DA90D7400749F4A /* Sources */,
+				8410B8BC2DA90D7400749F4A /* Frameworks */,
+				8410B8BD2DA90D7400749F4A /* Resources */,
+				5254952AC392BD9B18066902 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9104FEEB2DA002F300B2A337 /* networking-chat */,
+				8410B8C12DA90D7400749F4A /* ai-chat */,
 			);
-			name = "networking-chat";
-			productName = "networking-chat";
-			productReference = 9104FEE92DA002F300B2A337 /* networking-chat.app */;
+			name = "ai-chat";
+			productName = "ai-chat";
+			productReference = 8410B8BF2DA90D7400749F4A /* ai-chat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9104FEE12DA002F300B2A337 /* Project object */ = {
+		8410B8B72DA90D7400749F4A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					9104FEE82DA002F300B2A337 = {
-						CreatedOnToolsVersion = 16.2;
+					8410B8BE2DA90D7400749F4A = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 9104FEE42DA002F300B2A337 /* Build configuration list for PBXProject "networking-chat" */;
+			buildConfigurationList = 8410B8BA2DA90D7400749F4A /* Build configuration list for PBXProject "ai-chat" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 9104FEE02DA002F300B2A337;
+			mainGroup = 8410B8B62DA90D7400749F4A;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 9104FEEA2DA002F300B2A337 /* Products */;
+			productRefGroup = 8410B8C02DA90D7400749F4A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9104FEE82DA002F300B2A337 /* networking-chat */,
+				8410B8BE2DA90D7400749F4A /* ai-chat */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9104FEE72DA002F300B2A337 /* Resources */ = {
+		8410B8BD2DA90D7400749F4A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,24 +155,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4458854CC320CD9D387B0A8F /* [CP] Embed Pods Frameworks */ = {
+		5254952AC392BD9B18066902 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-networking-chat/Pods-networking-chat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ai-chat/Pods-ai-chat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-networking-chat/Pods-networking-chat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ai-chat/Pods-ai-chat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-networking-chat/Pods-networking-chat-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ai-chat/Pods-ai-chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B345E7C81A49627469FB792A /* [CP] Check Pods Manifest.lock */ = {
+		F1B5ED28E3F30688956D4EF8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -187,7 +187,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-networking-chat-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ai-chat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -197,7 +197,7 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9104FEE52DA002F300B2A337 /* Sources */ = {
+		8410B8BB2DA90D7400749F4A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,30 +207,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9104FEFD2DA002F600B2A337 /* Debug */ = {
+		8410B8D32DA90D7700749F4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B063FA76A9BEB5D7B7CA6BAB /* Pods-networking-chat.debug.xcconfig */;
+			baseConfigurationReference = 3FCD2416C52DFEA5AB20C52F /* Pods-ai-chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ai-chat/ai-chat.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HPC929F5X6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "networking-chat/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "LM Networking Chat";
+				INFOPLIST_FILE = "ai-chat/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI ChatBot";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.likeminds.networking-chat";
+				PRODUCT_BUNDLE_IDENTIFIER = com.likeminds.chatapp.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -238,30 +239,31 @@
 			};
 			name = Debug;
 		};
-		9104FEFE2DA002F600B2A337 /* Release */ = {
+		8410B8D42DA90D7700749F4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 152F36FAA2F946A242E37272 /* Pods-networking-chat.release.xcconfig */;
+			baseConfigurationReference = A367069A2D7479147B50E1A4 /* Pods-ai-chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ai-chat/ai-chat.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HPC929F5X6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "networking-chat/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "LM Networking Chat";
+				INFOPLIST_FILE = "ai-chat/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI ChatBot";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.likeminds.networking-chat";
+				PRODUCT_BUNDLE_IDENTIFIER = com.likeminds.chatapp.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -269,7 +271,7 @@
 			};
 			name = Release;
 		};
-		9104FEFF2DA002F600B2A337 /* Debug */ = {
+		8410B8D52DA90D7700749F4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -321,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -332,7 +334,7 @@
 			};
 			name = Debug;
 		};
-		9104FF002DA002F600B2A337 /* Release */ = {
+		8410B8D62DA90D7700749F4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -378,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -391,25 +393,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9104FEE42DA002F300B2A337 /* Build configuration list for PBXProject "networking-chat" */ = {
+		8410B8BA2DA90D7400749F4A /* Build configuration list for PBXProject "ai-chat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9104FEFF2DA002F600B2A337 /* Debug */,
-				9104FF002DA002F600B2A337 /* Release */,
+				8410B8D52DA90D7700749F4A /* Debug */,
+				8410B8D62DA90D7700749F4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9104FEFC2DA002F600B2A337 /* Build configuration list for PBXNativeTarget "networking-chat" */ = {
+		8410B8D22DA90D7700749F4A /* Build configuration list for PBXNativeTarget "ai-chat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9104FEFD2DA002F600B2A337 /* Debug */,
-				9104FEFE2DA002F600B2A337 /* Release */,
+				8410B8D32DA90D7700749F4A /* Debug */,
+				8410B8D42DA90D7700749F4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9104FEE12DA002F300B2A337 /* Project object */;
+	rootObject = 8410B8B72DA90D7400749F4A /* Project object */;
 }

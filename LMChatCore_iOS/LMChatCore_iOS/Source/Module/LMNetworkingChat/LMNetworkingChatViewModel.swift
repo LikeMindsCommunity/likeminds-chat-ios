@@ -71,7 +71,7 @@ public class LMNetworkingChatViewModel: LMChatBaseViewModel {
         guard LMChatCore.isInitialized else {
             throw LMChatError.chatNotInitialized
         }
-        let viewController = LMCoreComponents.shared.dmChatFeedScreen.init()
+        let viewController = LMCoreComponents.shared.networkingChatScreen.init()
         viewController.viewModel = LMNetworkingChatViewModel(viewController)
         return viewController
     }
@@ -99,6 +99,7 @@ public class LMNetworkingChatViewModel: LMChatBaseViewModel {
     /// Registers this view model as an observer for DM chatrooms and
     /// starts observing live DM feed updates for the community.
     func getChatrooms() {
+        
         LMChatClient.shared.getDMChatrooms(withObserver: self)
         LMChatClient.shared.observeLiveDMFeed(
             withCommunityId: SDKPreferences.shared.getCommunityId() ?? "")
