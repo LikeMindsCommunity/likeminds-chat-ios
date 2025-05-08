@@ -125,7 +125,7 @@ open class LMChatMessageBubbleView: LMView {
         contentContainer.insertArrangedSubview(view, at: atIndex)
     }
     
-    func bubbleFor(_ isInComing: Bool) {
+    open func bubbleFor(_ isInComing: Bool) {
         self.isIncoming = isInComing
         containerViewLeadingConstraint?.isActive = false
         containerViewTrailingConstraint?.isActive = false

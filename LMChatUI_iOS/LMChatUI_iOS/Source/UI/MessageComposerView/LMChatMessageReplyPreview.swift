@@ -21,13 +21,22 @@ open class LMChatMessageReplyPreview: LMView {
         public let attachmentsUrls: [(thumbnailUrl: String?, fileUrl: String?, fileType: AttachmentViewData.AttachmentType?)]?
         public let messageType: Int?
         public let isDeleted: Bool
+        public let replyPrivatelyView: Bool
         
-        public init(username: String?, replyMessage: String?, attachmentsUrls: [(thumbnailUrl: String?, fileUrl: String?, fileType: AttachmentViewData.AttachmentType?)]?, messageType: Int?, isDeleted: Bool = false) {
+        public init(
+            username: String?,
+            replyMessage: String?,
+            attachmentsUrls: [(thumbnailUrl: String?, fileUrl: String?, fileType: AttachmentViewData.AttachmentType?)]?,
+            messageType: Int?,
+            isDeleted: Bool = false,
+            replyPrivatelyView: Bool = false
+        ) {
             self.username = username
             self.replyMessage = replyMessage
             self.attachmentsUrls = attachmentsUrls
             self.messageType = messageType
             self.isDeleted = isDeleted
+            self.replyPrivatelyView = replyPrivatelyView
         }
     }
     
