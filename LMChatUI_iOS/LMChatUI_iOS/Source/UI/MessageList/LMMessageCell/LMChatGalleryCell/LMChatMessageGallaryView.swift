@@ -331,7 +331,7 @@ open class LMChatMessageGallaryView: LMView {
 
         if item.fileType == .video {
             imageUrl = item.thumbnailUrl
-        } else if item.fileType == .image {
+        } else {
             imageUrl = item.fileUrl
         }
 
