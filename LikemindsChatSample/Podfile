@@ -7,7 +7,7 @@ workspace 'LikemindsChatSample.xcworkspace'
 target 'LikemindsChatSample' do
   project 'LikemindsChatSample.xcodeproj'
   
-  use_frameworks!
+  use_frameworks! 
 
   # Pods for LikemindsChatSample
   pod 'LikeMindsChatData', path: '../../likeminds-chat-ios-data/LikeMindsChatData.podspec'

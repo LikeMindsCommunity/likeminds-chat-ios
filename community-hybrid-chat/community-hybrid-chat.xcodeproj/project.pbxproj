@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DBD631D504DA9228CCD05FD8 /* Pods_community_hybrid_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E84F7CE6716A59906C8B6B8 /* Pods_community_hybrid_chat.framework */; };
+		7CA7A423503BF50343A8D515 /* Pods_community_hybrid_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6575318400B5B77AE62B23EE /* Pods_community_hybrid_chat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		144F41E669993514D5460ECB /* Pods-community-hybrid-chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-community-hybrid-chat.debug.xcconfig"; path = "Target Support Files/Pods-community-hybrid-chat/Pods-community-hybrid-chat.debug.xcconfig"; sourceTree = "<group>"; };
-		5E84F7CE6716A59906C8B6B8 /* Pods_community_hybrid_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_community_hybrid_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6575318400B5B77AE62B23EE /* Pods_community_hybrid_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_community_hybrid_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C0D55FE056877804C02F2BF /* Pods-community-hybrid-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-community-hybrid-chat.release.xcconfig"; path = "Target Support Files/Pods-community-hybrid-chat/Pods-community-hybrid-chat.release.xcconfig"; sourceTree = "<group>"; };
 		912E32F52DA003B30080234C /* community-hybrid-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "community-hybrid-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		942F688EBAC035356DD0235B /* Pods-community-hybrid-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-community-hybrid-chat.release.xcconfig"; path = "Target Support Files/Pods-community-hybrid-chat/Pods-community-hybrid-chat.release.xcconfig"; sourceTree = "<group>"; };
+		B4DFA078DCD93D68EDDE6867 /* Pods-community-hybrid-chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-community-hybrid-chat.debug.xcconfig"; path = "Target Support Files/Pods-community-hybrid-chat/Pods-community-hybrid-chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD631D504DA9228CCD05FD8 /* Pods_community_hybrid_chat.framework in Frameworks */,
+				7CA7A423503BF50343A8D515 /* Pods_community_hybrid_chat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +56,7 @@
 				912E32F72DA003B30080234C /* community-hybrid-chat */,
 				912E32F62DA003B30080234C /* Products */,
 				AFD08083D754F00DE36FD94F /* Pods */,
-				F50DAD8B3E0F8A3C87403041 /* Frameworks */,
+				92ED3522AA4E6D95FF727B5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,21 +68,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		92ED3522AA4E6D95FF727B5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6575318400B5B77AE62B23EE /* Pods_community_hybrid_chat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AFD08083D754F00DE36FD94F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				144F41E669993514D5460ECB /* Pods-community-hybrid-chat.debug.xcconfig */,
-				942F688EBAC035356DD0235B /* Pods-community-hybrid-chat.release.xcconfig */,
+				B4DFA078DCD93D68EDDE6867 /* Pods-community-hybrid-chat.debug.xcconfig */,
+				6C0D55FE056877804C02F2BF /* Pods-community-hybrid-chat.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		F50DAD8B3E0F8A3C87403041 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5E84F7CE6716A59906C8B6B8 /* Pods_community_hybrid_chat.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,11 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 912E33082DA003B50080234C /* Build configuration list for PBXNativeTarget "community-hybrid-chat" */;
 			buildPhases = (
-				BAAA8B56F1081ABBF6A72615 /* [CP] Check Pods Manifest.lock */,
+				3E81C1EE0825BBAA1C5FC09D /* [CP] Check Pods Manifest.lock */,
 				912E32F12DA003B30080234C /* Sources */,
 				912E32F22DA003B30080234C /* Frameworks */,
 				912E32F32DA003B30080234C /* Resources */,
-				D0F76E3826410DF8DDD4F2BB /* [CP] Embed Pods Frameworks */,
+				8047D0C0877F33642543A0E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,7 +155,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BAAA8B56F1081ABBF6A72615 /* [CP] Check Pods Manifest.lock */ = {
+		3E81C1EE0825BBAA1C5FC09D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -177,7 +177,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0F76E3826410DF8DDD4F2BB /* [CP] Embed Pods Frameworks */ = {
+		8047D0C0877F33642543A0E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -209,7 +209,7 @@
 /* Begin XCBuildConfiguration section */
 		912E33092DA003B50080234C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 144F41E669993514D5460ECB /* Pods-community-hybrid-chat.debug.xcconfig */;
+			baseConfigurationReference = B4DFA078DCD93D68EDDE6867 /* Pods-community-hybrid-chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -242,7 +242,7 @@
 		};
 		912E330A2DA003B50080234C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 942F688EBAC035356DD0235B /* Pods-community-hybrid-chat.release.xcconfig */;
+			baseConfigurationReference = 6C0D55FE056877804C02F2BF /* Pods-community-hybrid-chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

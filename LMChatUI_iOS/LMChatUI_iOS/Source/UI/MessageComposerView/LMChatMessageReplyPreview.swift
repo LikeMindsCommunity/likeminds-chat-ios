@@ -8,8 +8,9 @@
 import Foundation
 import Kingfisher
 
-public protocol LMBottomMessageReplyPreviewDelegate: AnyObject {
+public protocol LMBottomMessageReplyPreviewDelegate: AnyObject{
     func clearReplyPreview()
+    func didTapOnReplyPrivatelyCell()
 }
 
 @IBDesignable
@@ -22,7 +23,13 @@ open class LMChatMessageReplyPreview: LMView {
         public let messageType: Int?
         public let isDeleted: Bool
         
-        public init(username: String?, replyMessage: String?, attachmentsUrls: [(thumbnailUrl: String?, fileUrl: String?, fileType: AttachmentViewData.AttachmentType?)]?, messageType: Int?, isDeleted: Bool = false) {
+        public init(
+            username: String?,
+            replyMessage: String?,
+            attachmentsUrls: [(thumbnailUrl: String?, fileUrl: String?, fileType: AttachmentViewData.AttachmentType?)]?,
+            messageType: Int?,
+            isDeleted: Bool = false,
+        ) {
             self.username = username
             self.replyMessage = replyMessage
             self.attachmentsUrls = attachmentsUrls

@@ -113,5 +113,4 @@ extension AppDelegate: MessagingDelegate {
     ) {
         print("Firebase registration token: \(String(describing: fcmToken))")
     }
-
 }

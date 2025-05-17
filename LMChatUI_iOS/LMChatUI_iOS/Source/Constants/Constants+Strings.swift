@@ -76,4 +76,17 @@ public extension Constants {
         
         
     }
+    
+    struct Keys{
+        private init(){}
+        
+        // Shared Instance
+        public static let shared = Keys()
+        
+        public var type = "type"
+        public var sourceChatroomId = "source_chatroom_id"
+        public var sourceChatroomName = "source_chatroom_name"
+        public var sourceConversation = "source_conversation"
+        public var replyPrivately = "REPLY_PRIVATELY"
+    }
 }

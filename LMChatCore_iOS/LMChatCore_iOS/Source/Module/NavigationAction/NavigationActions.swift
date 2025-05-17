@@ -14,7 +14,7 @@ import SafariServices
 
 enum NavigationActions {
     case homeFeed
-    case chatroom(chatroomId: String, conversationID: String? = nil)
+    case chatroom(chatroomId: String, conversationID: String? = nil, replyPrivatelyExtras: LMChatReplyPrivatelyExtra? = nil)
     case messageAttachment(delegate: LMChatAttachmentViewDelegate?, chatroomId: String?, sourceType: LMChatAttachmentViewModel.LMAttachmentSourceType)
     case messageAttachmentWithData(data:[MediaPickerModel], delegate: LMChatAttachmentViewDelegate?, chatroomId: String?, mediaType: MediaType)
     case participants(chatroomId: String, isSecret: Bool)
@@ -47,8 +47,8 @@ class NavigationScreen: NavigationScreenProtocol {
         case .homeFeed:
             guard let homefeedvc = try? LMCommunityChatViewModel.createModule() else { return }
             source.navigationController?.pushViewController(homefeedvc, animated: true)
-        case .chatroom(let chatroomId, let conversationId):
-            guard let chatroom = try? LMChatMessageListViewModel.createModule(withChatroomId: chatroomId, conversationId: conversationId) else { return }
+        case .chatroom(let chatroomId, let conversationId, let replyPrivatelyExtras):
+            guard let chatroom = try? LMChatMessageListViewModel.createModule(withChatroomId: chatroomId, conversationId: conversationId, replyPrivatelyExtras: replyPrivatelyExtras) else { return }
             source.navigationController?.pushViewController(chatroom, animated: true)
         case .messageAttachment(let delegate, let chatroomId, let sourceType):
             guard let attachment = try? LMChatAttachmentViewModel.createModule(delegate: delegate, chatroomId: chatroomId, sourceType: sourceType) else { return }

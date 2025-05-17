@@ -68,8 +68,7 @@ extension Conversation {
         viewData.lastUpdated = self.lastUpdated
         viewData.deletedByMember = self.deletedByMember?.toViewData()  // Assuming `Member` has `toViewData`
         viewData.replyConversation = replyConversation ?? self.replyConversation?.toViewData()  // Assuming `Conversation` has `toViewData`
-        viewData.conversationStatus = self.conversationStatus?.toViewData()  // Assuming `ConversationStatus` has `toViewData`
-        viewData.widget = self.widget?.toViewData()  // Assuming `Widget` has `toViewData`
+        viewData.conversationStatus = self.conversationStatus?.toViewData()  // Assuming `ConversationStatus` has `toViewData` // Assuming `Widget` has `toViewData`
         viewData.memberTitle = memberTitle
         viewData.message = message
         viewData.createdBy = createdBy
@@ -109,6 +108,8 @@ extension Conversation {
             
             viewData.pollInfoData = pollInfoDataUpdated
         }
+        
+        viewData.widget = self.widget?.toViewData() 
         
         return viewData
     }

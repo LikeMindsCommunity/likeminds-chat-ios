@@ -76,21 +76,21 @@ PODS:
   - libwebp/sharpyuv (1.5.0)
   - libwebp/webp (1.5.0):
     - libwebp/sharpyuv
-  - LikeMindsChatCore (1.7.1):
+  - LikeMindsChatCore (1.8.0):
     - AWSCognito
     - AWSCore
     - AWSS3
     - Giphy
-    - LikeMindsChatData (~> 1.7.1)
-    - LikeMindsChatUI (~> 1.7.1)
+    - LikeMindsChatData (~> 1.8.0)
+    - LikeMindsChatUI (~> 1.8.0)
     - lottie-ios (~> 4.5.1)
-  - LikeMindsChatData (1.7.1):
+  - LikeMindsChatData (1.8.0):
     - Alamofire (~> 5.7.1)
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseMessaging
     - RealmSwift (~> 10.40)
-  - LikeMindsChatUI (1.7.1):
+  - LikeMindsChatUI (1.8.0):
     - Kingfisher (~> 7.0)
   - lottie-ios (4.5.1)
   - nanopb (3.30910.0):
@@ -161,15 +161,15 @@ SPEC CHECKSUMS:
   Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
-  LikeMindsChatCore: e2c51fafd74ca3ea6ad41a0682ccb12ee277e224
-  LikeMindsChatData: b454c90afa3728e8095996f14fda48516b31de81
-  LikeMindsChatUI: a433b12c21484bd04c451fd2535076ea0372c6a0
+  LikeMindsChatCore: c7ffd9e9d4b2f760115ae007bde1981d9e8558e0
+  LikeMindsChatData: e823e62a004f60fbc80957d81f9f6155e2cac689
+  LikeMindsChatUI: 20aa651a7e51eb19cf62fb41187c0186bc90203b
   lottie-ios: 248b380fa1b97d18e792c37d90da7ab2aa0d6562
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   Realm: 5383a96518b1dbff38b3403330e1d2e27f25c17c
   RealmSwift: 87fd7ca547e4cbbfbe0be2b0b2fb1ac7b95753e2
 
-PODFILE CHECKSUM: 52160fa796cd611481b3bf27679920dfb12a3717
+PODFILE CHECKSUM: c89a39973e84bdfc31a036f5da2a9d535e809d34
 
 COCOAPODS: 1.16.2

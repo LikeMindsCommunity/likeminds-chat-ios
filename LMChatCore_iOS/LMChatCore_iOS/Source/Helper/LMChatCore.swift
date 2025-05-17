@@ -44,20 +44,27 @@ public protocol LMChatCoreCallback: AnyObject {
         eventProperties: [String: AnyHashable]
     )
 }
-public class LMChatCore {
+public enum LMChatTheme {
+    case COMMUNITY_CHAT
+    case NETWORKING_CHAT
+    case COMMUNITY_HYBRID_CHAT
+    case AI_CHATBOT
+}
 
+public class LMChatCore {
     private init() {}
 
     public static var shared: LMChatCore = .init()
     public static private(set) var isInitialized: Bool = false
     public static private(set) var isSecretChatroomInviteEnabled: Bool = false
     public static var openedChatroomId: String? = nil
+    public static private(set) var currentTheme: LMChatTheme =
+        .COMMUNITY_HYBRID_CHAT
 
     // Callbacks for accessToken and refreshToken strategy
     private(set) var coreCallback: LMChatCoreCallback?
 
-    public static var analytics: LMChatAnalyticsProtocol? =
-        LMChatAnalytics()
+    public static var analytics: LMChatAnalyticsProtocol? = LMChatAnalytics()
 
     var deviceId: String?
 
@@ -65,21 +72,27 @@ public class LMChatCore {
     ///
     /// This function initializes necessary components for the chat functionality,
     /// including the AWS manager and Giphy API configuration.
+    ///
+    /// - Parameters:
+    ///   - deviceId: Optional device identifier for push notifications
+    ///   - excludedConversationStates: Optional array of conversation states to exclude
+    ///   - theme: The chat theme to be used. Defaults to .communityChat
     public func setupChat(
-                deviceId: String? = nil,
-                excludedConversationStates: [ConversationState]? = nil
-            ) {
-                
-                _ = LMChatClient.Builder()
-                    .excludedConversationStates(excludedConversationStates)
-                    .setTokenManager(self)
-                    .build()
-                
-                self.deviceId = deviceId
-                
-                LMChatAWSManager.shared.initialize()
-                GiphyAPIConfiguration.configure()
-            }
+        deviceId: String? = nil,
+        excludedConversationStates: [ConversationState]? = nil,
+        theme: LMChatTheme = .COMMUNITY_CHAT
+    ) {
+        _ = LMChatClient.Builder()
+            .excludedConversationStates(excludedConversationStates)
+            .setTokenManager(self)
+            .build()
+
+        self.deviceId = deviceId
+        LMChatCore.currentTheme = theme
+
+        LMChatAWSManager.shared.initialize()
+        GiphyAPIConfiguration.configure()
+    }
 
     // Method to set a custom callback
     public func setCallback(_ callback: LMChatCoreCallback) {
@@ -176,17 +189,9 @@ public class LMChatCore {
             $0.type
                 == CommunitySetting.SettingType.enableDMWithoutConnectionRequest
                 .rawValue
-        }), setting.enabled == true {
-            LMSharedPreferences.setValue(
-                true,
-                key: LMSharedPreferencesKeys.isDMWithRequestEnabled.rawValue
-            )
-        } else {
-            // If the setting is not present or is disabled, explicitly store a false value.
-            LMSharedPreferences.setValue(
-                false,
-                key: LMSharedPreferencesKeys.isDMWithRequestEnabled.rawValue
-            )
+        }) {
+            LMDMChatUtil.updateDMRequestSettings(
+                isEnabled: setting.enabled ?? false)
         }
 
         // Check if there is a setting for secret chatroom invites.
@@ -202,6 +207,20 @@ public class LMChatCore {
         // register the device for receiving push notifications or similar services.
         if let deviceId = self.deviceId, !deviceId.isEmpty {
             self.registerDevice(deviceId: deviceId)
+        }
+
+        // Fetch community configurations in background
+        LMChatClient.shared.getCommunityConfigurations { response in
+            guard response.success, let configurations = response.data else {
+                print(
+                    "Failed to fetch community configurations: \(response.errorMessage ?? "")"
+                )
+                return
+            }
+
+            // Save configurations
+            LMConfigurationManager.saveConfigurations(
+                configurations.configurations)
         }
 
         // Mark the initialization process as complete.
@@ -388,6 +407,12 @@ public class LMChatCore {
         LMSharedPreferences.removeValue(forKey: LMSharedPreferencesKeys.aiChatBotRoomKey)
         
         
+    }
+
+    /// Returns the reply privately configuration if available
+    /// - Returns: Configuration object for reply privately feature or nil if not found
+    public func getReplyPrivatelyConfiguration() -> Configuration? {
+        return LMConfigurationManager.getReplyPrivatelyConfiguration()
     }
 
     public func parseDeepLink(routeUrl: String) {

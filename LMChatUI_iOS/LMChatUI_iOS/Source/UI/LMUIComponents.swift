@@ -93,6 +93,8 @@ public struct LMUIComponents {
         LMChatMessageReactionsView.self
     public var messageReplyView: LMChatMessageReplyPreview.Type =
         LMChatMessageReplyPreview.self
+    public var messageReplyPrivatelyView: LMChatMessageReplyPrivatelyPreview.Type =
+        LMChatMessageReplyPrivatelyPreview.self
     public var bottomLinkPreview: LMChatBottomMessageLinkPreview.Type =
         LMChatBottomMessageLinkPreview.self
     public var chatProfileView: LMChatProfileView.Type = LMChatProfileView.self
